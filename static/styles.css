@@ -1,0 +1,147 @@
+/* Estilos generales */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; width: 100%; overflow: hidden; margin: 0; }
+body {
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Contenedor principal */
+.container {
+    width: 100vw;
+    height: 100vh;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; /* Para que el video esté detrás del contenido */
+}
+
+/* Contenedores laterales */
+.side-container {
+    background: inherit;
+    width: calc(50vw - 210px);
+    height: 100vh;
+    position: absolute;
+    top: 0;
+}
+.left-container { left: 0; }
+.right-container { right: 0; }
+
+/* Texto en la parte inferior */
+.text {
+    font-family: 'URW DIN', sans-serif;
+    color: white;
+    font-size: 6px;
+    text-align: center;
+    margin: 0;
+    padding: 0 10px;
+    position: absolute;
+    bottom: 70px;
+}
+
+/* Logo animado */
+.logo {
+    width: 60%;
+    height: auto;
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: oscillate 8s ease-in-out infinite;
+}
+
+@keyframes oscillate {
+    0% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-10px); }
+    100% { transform: translateX(-50%) translateY(0); }
+}
+
+/* Imágenes laterales */
+.image-left {
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60px;
+    height: auto;
+    visibility: hidden;
+}
+
+.image-right {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60px;
+    height: auto;
+    visibility: hidden;
+}
+
+/* Contenedor de botones */
+.button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-top: auto;
+    height: 100%;
+}
+
+/* Botones */
+.button {
+    font-family: 'Noto Sans JP', sans-serif;
+    color: #ff0000;
+    font-size: 24px;
+    text-align: center;
+    padding: 20px 40px;
+    border: 4px solid #ff0000;
+    border-radius: 50px;
+    background: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    width: 100%;
+    max-width: 250px;
+    box-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
+    transition: all 0.3s ease-in-out;
+    text-decoration: none;
+}
+
+.button:hover,
+.button-clicked {
+    background: rgba(255, 0, 0, 0.8);
+    color: white;
+    box-shadow: 0 0 15px 5px #ff0000;
+}
+
+.button:active {
+    transform: scale(0.98);
+    box-shadow: 0 0 5px #ff0000;
+}
+
+/* Incluir la fuente Nervous */
+@font-face {
+    font-family: 'Overwave';  /* Nombre de la fuente */
+    src: url('/static/fonts/Overwave.ttf') format('truetype');
+}
+
+/* Usar la fuente en los botones */
+.button-custom {
+    font-family: 'Overwave', sans-serif;  /* Aplica la fuente Nervous a los botones */
+    font-size: 30px;  /* Aumenta el tamaño de la fuente */
+}

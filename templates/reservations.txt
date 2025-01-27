@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservations</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='table-styles.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function fetchReservations() {
+            $.ajax({
+                url: '/api/reservations',
+                method: 'GET',
+                success: function(data) {
+                    let tableBody = '';
+                    data.forEach(function(row) {
+                        tableBody += `
+                            <tr>
+                                <td>${row.id}</td>
+                                <td>${row.name}</td>
+                                <td>${row.instagram_username}</td>
+                                <td>${row.contact_phone}</td>
+                                <td>${row.creation_date}</td>
+                                <td>${row.reservation_date}</td>
+                                <td>${row.number_of_people}</td>
+                                <td>${row.table}</td>
+                                <td>${row.minimum_spend}</td>
+                                <td>${row.reservation_reason}</td>
+                                <td>${row.special_notes}</td>
+                                <td>${row.status}</td>
+                            </tr>`;
+                    });
+                    $('#reservations-table tbody').html(tableBody);
+                }
+            });
+        }
+
+        // Actualizar la tabla cada 10 segundos
+        $(document).ready(function() {
+            fetchReservations();  // Cargar al abrir la página
+            setInterval(fetchReservations, 5000);  // Intervalo de actualización
+        });
+    </script>
+</head>
+<body>
+    <div>
+        <h1>Reservations</h1>
+        <table id="reservations-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Instagram Username</th>
+                    <th>Contact Phone</th>
+                    <th>Creation Date</th>
+                    <th>Reservation Date</th>
+                    <th>Number of People</th>
+                    <th>Table</th>
+                    <th>Minimum Spend</th>
+                    <th>Reservation Reason</th>
+                    <th>Special Notes</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Filas llenadas dinámicamente por AJAX -->
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

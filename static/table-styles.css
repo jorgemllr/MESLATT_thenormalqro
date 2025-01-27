@@ -1,0 +1,74 @@
+/* Estilo general */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Estilos de la tabla */
+table {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    margin-top: 40px;
+}
+
+th, td {
+    padding: 10px 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+th {
+    background-color: #333;
+    color: #fff;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 1200px; /* Ajusta al ancho de la tabla */
+    padding: 10px 0;
+}
+
+/* Estilo del encabezado */
+h1 {
+    text-align: left;
+    font-size: 24px;
+    color: #333;
+    margin: 0;
+}
+
+/* Estilo del cuadro de búsqueda */
+#search-bar {
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.status-btn {
+    background-color: gray;
+    color: white;
+    border-radius: 8px;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.status-btn.confirmed {
+    background-color: #4CAF50; /* Verde atractivo */
+    color: white;
+}

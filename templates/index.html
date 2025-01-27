@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <link rel="stylesheet" href="/static/chatbot-styles.css"> <!-- Link al archivo CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Contenedor lateral izquierdo -->
+    <div class="side-container left-side"></div>
+
+    <!-- Contenedor lateral derecho -->
+    <div class="side-container right-side"></div>
+
+    <!-- Aquí se añade el fondo liquid metal -->
+    <shader-art autoplay controls="false">
+        <uniform type="float" name="scale" value="1" min="0.1" max="4" step="0.01" />
+        <uniform type="float" name="ax" value="5" min="1" max="15" step=".01" />
+        <uniform type="float" name="ay" value="7" min="1" max="15" step=".01" />
+        <uniform type="float" name="az" value="9" min="1" max="15" step=".01" />
+        <uniform type="float" name="aw" value="13" min="1" max="15" step=".01" />
+        <uniform type="float" name="bx" value="0.06" min="-1" max="1" step="0.01" />
+        <uniform type="float" name="by" value="1" min="-1" max="1" step="0.01" />
+        <uniform type="color" name="color1" value="#d82b2b" />
+        <uniform type="color" name="color2" value="#1f0202" />
+        <uniform type="color" name="color3" value="#ff0000" />
+        <uniform type="color" name="color4" value="#252a2a" />
+        
+        <script type="buffer" name="position" data-size="2">
+            [-1, 1, -1,-1, 1,1, 1, 1, -1,-1, 1,-1]
+        </script>
+        <script type="buffer" name="uv" data-size="2">
+            [ 0, 0,  0, 1, 1,0, 1, 0,  0, 1, 1, 1]
+        </script>
+        
+        <script type="vert">
+            precision highp float;
+            attribute vec4 position;
+            attribute vec2 uv;
+            varying vec2 vUv;
+            void main() {
+                vUv = uv;
+                gl_Position = position;
+            }
+        </script>
+        <script type="frag">
+            precision highp float;
+            varying vec2 vUv;
+            uniform float time;
+            uniform float scale;
+            uniform vec2 resolution;
+            uniform vec3 color1, color2, color3, color4;
+            uniform int numOctaves;
+            const float PI = 3.141592654;
+            uniform float ax, ay, az, aw;
+            uniform float bx, by;
+
+            float cheapNoise(vec3 stp) {
+                vec3 p = vec3(stp.st, stp.p);
+                vec4 a = vec4(ax, ay, az, aw);
+                return mix(
+                    sin(p.z + p.x * a.x + cos(p.x * a.x - p.z)) * 
+                    cos(p.z + p.y * a.y + cos(p.y * a.x + p.z)),
+                    sin(1. + p.x * a.z + p.z + cos(p.y * a.w - p.z)) * 
+                    cos(1. + p.y * a.w + p.z + cos(p.x * a.x + p.z)), 
+                    .436
+                );
+            }
+
+            void main() {
+                vec2 aR = vec2(resolution.x/resolution.y, 1.);
+                vec2 st = vUv * aR * scale;
+                float S = sin(time * .005);
+                float C = cos(time * .005);
+                vec2 v1 = vec2(cheapNoise(vec3(st, 2.)), cheapNoise(vec3(st, 1.)));
+                vec2 v2 = vec2(
+                    cheapNoise(vec3(st + bx*v1 + vec2(C * 1.7, S * 9.2), 0.15 * time)),
+                    cheapNoise(vec3(st + by*v1 + vec2(S * 8.3, C * 2.8), 0.126 * time))
+                );
+                float n = .5 + .5 * cheapNoise(vec3(st + v2, 0.));
+                
+                vec3 color = mix(color1,
+                    color2,
+                    clamp((n*n)*8.,0.0,1.0));
+
+                color = mix(color,
+                    color3,
+                    clamp(length(v1),0.0,1.0));
+
+                color = mix(color,
+                            color4,
+                            clamp(length(v2.x),0.0,1.0));
+                
+                color /= n*n + n * 7.;
+                gl_FragColor = vec4(color,1.);
+            }
+        </script>
+    </shader-art>
+
+    <div class="chat-container">
+        <div class="logo-container">
+            <img src="/static/the-normal-club.png" alt="The Normal Club Logo">
+        </div>
+        <div id="chat-box" class="chat-box"></div>
+        <div class="chat-input">
+            <input type="text" id="message" placeholder="The Normal Qro">
+            <button onclick="sendMessage()">
+                <i class="fas fa-paper-plane"></i> <!-- Ícono de enviar de Font Awesome -->
+            </button>            
+        </div>
+    </div>
+
+    <script>
+        function sendMessage() {
+            const messageInput = document.getElementById("message");
+            const message = messageInput.value;
+            if (!message) return;
+
+            const chatBox = document.getElementById("chat-box");
+
+            const userMessageDiv = document.createElement("div");
+            userMessageDiv.classList.add("message", "user-message");
+            userMessageDiv.textContent = message;
+            chatBox.appendChild(userMessageDiv);
+
+            fetch("/ask", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body: `message=${encodeURIComponent(message)}`
+            })
+            .then(response => response.json())
+            .then(data => {
+                const botMessageDiv = document.createElement("div");
+                botMessageDiv.classList.add("message", "bot-message");
+
+                // Manejo de respuesta HTML
+                if (data.html_response) {
+                    botMessageDiv.innerHTML = data.bot_response;
+                } else {
+                    botMessageDiv.textContent = data.bot_response;
+                }
+
+                chatBox.appendChild(botMessageDiv);
+                chatBox.scrollTop = chatBox.scrollHeight;
+            });
+
+            messageInput.value = "";
+        }
+
+        // Detect Enter key to send message
+        document.getElementById("message").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") { // Check if Enter key is pressed
+                event.preventDefault();
+                sendMessage();
+            }
+        });
+    </script>
+
+    <script type="module">
+        import { ShaderArt } from 'https://esm.sh/shader-art';
+        import { UniformPlugin } from 'https://esm.sh/@shader-art/plugin-uniform';
+
+        ShaderArt.register([() => new UniformPlugin()]);
+    </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const chatBox = document.querySelector('.chat-box');
+
+        // Mensaje de bienvenida personalizado
+        const welcomeMessage = document.createElement('div');
+        welcomeMessage.classList.add('message', 'bot-message', 'welcome-message');
+        welcomeMessage.textContent = "¡Hola! Bienvenido a The Normal. Este chatbot está diseñado para responder tus preguntas y ayudarte con tus reservaciones. ¿En qué podemos asistirte hoy?";
+        chatBox.appendChild(welcomeMessage);
+
+        // Mensaje con la imagen y el enlace
+        const imageMessage = document.createElement('div');
+        imageMessage.classList.add('message', 'bot-message');
+        imageMessage.innerHTML = `
+            <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                <p style="margin: 0; font-size: 14px; color: #fff; text-align: center;">
+                    Nuestra ubicación:
+                </p>
+                <a href="https://maps.app.goo.gl/Y6sfFj9i2CrUeoMx6" target="_blank" style="text-decoration: none;">
+                    <img src="/static/images/2023-01-07.jpg" alt="Ubicación de TheNormal" 
+                         style="width: 200px; margin-top: 10px; border-radius: 5px;">
+                </a>
+                <a href="https://maps.app.goo.gl/Y6sfFj9i2CrUeoMx6" target="_blank" 
+                   style="margin-top: 5px; font-size: 14px; color: #C70000; text-decoration: underline;">
+                    Ver en Google Maps
+                </a>
+            </div>
+        `;
+        chatBox.appendChild(imageMessage);
+    });
+</script>
+
+</body>
+</html>

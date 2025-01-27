@@ -1,0 +1,1242 @@
+2025-01-27 14:25:17,107 - INFO - Página principal cargada.
+2025-01-27 14:25:23,099 - ERROR - Exception on /chatbot [GET]
+Traceback (most recent call last):
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 409, in home
+    iniciar_nueva_sesion()
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 67, in iniciar_nueva_sesion
+    db_connection = conectar_db()
+                    ^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 30, in conectar_db
+    return mysql.connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\__init__.py", line 179, in connect
+    return MySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 95, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\abstracts.py", line 716, in connect
+    self._open_connection()
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 208, in _open_connection
+    self._do_auth(self._user, self._password,
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 137, in _do_auth
+    packet = self._protocol.make_auth(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 99, in make_auth
+    packet += self._auth_response(client_flags, username, password,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 58, in _auth_response
+    auth = get_auth_plugin(auth_plugin)(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\authentication.py", line 190, in get_auth_plugin
+    raise errors.NotSupportedError(
+mysql.connector.errors.NotSupportedError: Authentication plugin 'caching_sha2_password' is not supported
+2025-01-27 14:26:18,870 - INFO - Página principal cargada.
+2025-01-27 14:27:01,586 - INFO - Página principal cargada.
+2025-01-27 14:28:45,221 - INFO - Página principal cargada.
+2025-01-27 14:35:54,950 - ERROR - Exception on /api/reservations_2 [GET]
+Traceback (most recent call last):
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 429, in api_reservations_2
+    db_connection = conectar_db()
+                    ^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 30, in conectar_db
+    return mysql.connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\__init__.py", line 179, in connect
+    return MySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 95, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\abstracts.py", line 716, in connect
+    self._open_connection()
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 208, in _open_connection
+    self._do_auth(self._user, self._password,
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 137, in _do_auth
+    packet = self._protocol.make_auth(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 99, in make_auth
+    packet += self._auth_response(client_flags, username, password,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 58, in _auth_response
+    auth = get_auth_plugin(auth_plugin)(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\authentication.py", line 190, in get_auth_plugin
+    raise errors.NotSupportedError(
+mysql.connector.errors.NotSupportedError: Authentication plugin 'caching_sha2_password' is not supported
+2025-01-27 14:35:59,916 - ERROR - Exception on /api/reservations_2 [GET]
+Traceback (most recent call last):
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 429, in api_reservations_2
+    db_connection = conectar_db()
+                    ^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 30, in conectar_db
+    return mysql.connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\__init__.py", line 179, in connect
+    return MySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 95, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\abstracts.py", line 716, in connect
+    self._open_connection()
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 208, in _open_connection
+    self._do_auth(self._user, self._password,
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 137, in _do_auth
+    packet = self._protocol.make_auth(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 99, in make_auth
+    packet += self._auth_response(client_flags, username, password,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 58, in _auth_response
+    auth = get_auth_plugin(auth_plugin)(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\authentication.py", line 190, in get_auth_plugin
+    raise errors.NotSupportedError(
+mysql.connector.errors.NotSupportedError: Authentication plugin 'caching_sha2_password' is not supported
+2025-01-27 14:36:04,922 - ERROR - Exception on /api/reservations_2 [GET]
+Traceback (most recent call last):
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 429, in api_reservations_2
+    db_connection = conectar_db()
+                    ^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 30, in conectar_db
+    return mysql.connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\__init__.py", line 179, in connect
+    return MySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 95, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\abstracts.py", line 716, in connect
+    self._open_connection()
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 208, in _open_connection
+    self._do_auth(self._user, self._password,
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 137, in _do_auth
+    packet = self._protocol.make_auth(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 99, in make_auth
+    packet += self._auth_response(client_flags, username, password,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 58, in _auth_response
+    auth = get_auth_plugin(auth_plugin)(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\authentication.py", line 190, in get_auth_plugin
+    raise errors.NotSupportedError(
+mysql.connector.errors.NotSupportedError: Authentication plugin 'caching_sha2_password' is not supported
+2025-01-27 14:36:07,019 - INFO - Página principal cargada.
+2025-01-27 14:36:09,210 - ERROR - Exception on /api/reservations_2 [GET]
+Traceback (most recent call last):
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 429, in api_reservations_2
+    db_connection = conectar_db()
+                    ^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 30, in conectar_db
+    return mysql.connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\__init__.py", line 179, in connect
+    return MySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 95, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\abstracts.py", line 716, in connect
+    self._open_connection()
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 208, in _open_connection
+    self._do_auth(self._user, self._password,
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 137, in _do_auth
+    packet = self._protocol.make_auth(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 99, in make_auth
+    packet += self._auth_response(client_flags, username, password,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 58, in _auth_response
+    auth = get_auth_plugin(auth_plugin)(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\authentication.py", line 190, in get_auth_plugin
+    raise errors.NotSupportedError(
+mysql.connector.errors.NotSupportedError: Authentication plugin 'caching_sha2_password' is not supported
+2025-01-27 14:36:11,453 - ERROR - Exception on /api/reservations_2 [GET]
+Traceback (most recent call last):
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 429, in api_reservations_2
+    db_connection = conectar_db()
+                    ^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 30, in conectar_db
+    return mysql.connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\__init__.py", line 179, in connect
+    return MySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 95, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\abstracts.py", line 716, in connect
+    self._open_connection()
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 208, in _open_connection
+    self._do_auth(self._user, self._password,
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 137, in _do_auth
+    packet = self._protocol.make_auth(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 99, in make_auth
+    packet += self._auth_response(client_flags, username, password,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 58, in _auth_response
+    auth = get_auth_plugin(auth_plugin)(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\authentication.py", line 190, in get_auth_plugin
+    raise errors.NotSupportedError(
+mysql.connector.errors.NotSupportedError: Authentication plugin 'caching_sha2_password' is not supported
+2025-01-27 14:36:14,964 - ERROR - Exception on /api/reservations_2 [GET]
+Traceback (most recent call last):
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 429, in api_reservations_2
+    db_connection = conectar_db()
+                    ^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 30, in conectar_db
+    return mysql.connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\__init__.py", line 179, in connect
+    return MySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 95, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\abstracts.py", line 716, in connect
+    self._open_connection()
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 208, in _open_connection
+    self._do_auth(self._user, self._password,
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 137, in _do_auth
+    packet = self._protocol.make_auth(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 99, in make_auth
+    packet += self._auth_response(client_flags, username, password,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 58, in _auth_response
+    auth = get_auth_plugin(auth_plugin)(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\authentication.py", line 190, in get_auth_plugin
+    raise errors.NotSupportedError(
+mysql.connector.errors.NotSupportedError: Authentication plugin 'caching_sha2_password' is not supported
+2025-01-27 14:36:16,314 - ERROR - Exception on /api/reservations_2 [GET]
+Traceback (most recent call last):
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 429, in api_reservations_2
+    db_connection = conectar_db()
+                    ^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 30, in conectar_db
+    return mysql.connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\__init__.py", line 179, in connect
+    return MySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 95, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\abstracts.py", line 716, in connect
+    self._open_connection()
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 208, in _open_connection
+    self._do_auth(self._user, self._password,
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 137, in _do_auth
+    packet = self._protocol.make_auth(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 99, in make_auth
+    packet += self._auth_response(client_flags, username, password,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 58, in _auth_response
+    auth = get_auth_plugin(auth_plugin)(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\authentication.py", line 190, in get_auth_plugin
+    raise errors.NotSupportedError(
+mysql.connector.errors.NotSupportedError: Authentication plugin 'caching_sha2_password' is not supported
+2025-01-27 14:36:19,928 - ERROR - Exception on /api/reservations_2 [GET]
+Traceback (most recent call last):
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 429, in api_reservations_2
+    db_connection = conectar_db()
+                    ^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 30, in conectar_db
+    return mysql.connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\__init__.py", line 179, in connect
+    return MySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 95, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\abstracts.py", line 716, in connect
+    self._open_connection()
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 208, in _open_connection
+    self._do_auth(self._user, self._password,
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 137, in _do_auth
+    packet = self._protocol.make_auth(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 99, in make_auth
+    packet += self._auth_response(client_flags, username, password,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 58, in _auth_response
+    auth = get_auth_plugin(auth_plugin)(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\authentication.py", line 190, in get_auth_plugin
+    raise errors.NotSupportedError(
+mysql.connector.errors.NotSupportedError: Authentication plugin 'caching_sha2_password' is not supported
+2025-01-27 14:36:21,946 - ERROR - Exception on /api/reservations_2 [GET]
+Traceback (most recent call last):
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 429, in api_reservations_2
+    db_connection = conectar_db()
+                    ^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 30, in conectar_db
+    return mysql.connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\__init__.py", line 179, in connect
+    return MySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 95, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\abstracts.py", line 716, in connect
+    self._open_connection()
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 208, in _open_connection
+    self._do_auth(self._user, self._password,
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 137, in _do_auth
+    packet = self._protocol.make_auth(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 99, in make_auth
+    packet += self._auth_response(client_flags, username, password,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 58, in _auth_response
+    auth = get_auth_plugin(auth_plugin)(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\authentication.py", line 190, in get_auth_plugin
+    raise errors.NotSupportedError(
+mysql.connector.errors.NotSupportedError: Authentication plugin 'caching_sha2_password' is not supported
+2025-01-27 14:36:23,953 - ERROR - Exception on /api/reservations_2 [GET]
+Traceback (most recent call last):
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 429, in api_reservations_2
+    db_connection = conectar_db()
+                    ^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 30, in conectar_db
+    return mysql.connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\__init__.py", line 179, in connect
+    return MySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 95, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\abstracts.py", line 716, in connect
+    self._open_connection()
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 208, in _open_connection
+    self._do_auth(self._user, self._password,
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 137, in _do_auth
+    packet = self._protocol.make_auth(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 99, in make_auth
+    packet += self._auth_response(client_flags, username, password,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 58, in _auth_response
+    auth = get_auth_plugin(auth_plugin)(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\authentication.py", line 190, in get_auth_plugin
+    raise errors.NotSupportedError(
+mysql.connector.errors.NotSupportedError: Authentication plugin 'caching_sha2_password' is not supported
+2025-01-27 14:36:24,244 - ERROR - Exception on /api/reservations_2 [GET]
+Traceback (most recent call last):
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 429, in api_reservations_2
+    db_connection = conectar_db()
+                    ^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 30, in conectar_db
+    return mysql.connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\__init__.py", line 179, in connect
+    return MySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 95, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\abstracts.py", line 716, in connect
+    self._open_connection()
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 208, in _open_connection
+    self._do_auth(self._user, self._password,
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 137, in _do_auth
+    packet = self._protocol.make_auth(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 99, in make_auth
+    packet += self._auth_response(client_flags, username, password,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 58, in _auth_response
+    auth = get_auth_plugin(auth_plugin)(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\authentication.py", line 190, in get_auth_plugin
+    raise errors.NotSupportedError(
+mysql.connector.errors.NotSupportedError: Authentication plugin 'caching_sha2_password' is not supported
+2025-01-27 14:36:29,158 - ERROR - Exception on /api/reservations_2 [GET]
+Traceback (most recent call last):
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 429, in api_reservations_2
+    db_connection = conectar_db()
+                    ^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 30, in conectar_db
+    return mysql.connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\__init__.py", line 179, in connect
+    return MySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 95, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\abstracts.py", line 716, in connect
+    self._open_connection()
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 208, in _open_connection
+    self._do_auth(self._user, self._password,
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 137, in _do_auth
+    packet = self._protocol.make_auth(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 99, in make_auth
+    packet += self._auth_response(client_flags, username, password,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 58, in _auth_response
+    auth = get_auth_plugin(auth_plugin)(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\authentication.py", line 190, in get_auth_plugin
+    raise errors.NotSupportedError(
+mysql.connector.errors.NotSupportedError: Authentication plugin 'caching_sha2_password' is not supported
+2025-01-27 14:36:29,914 - ERROR - Exception on /api/reservations_2 [GET]
+Traceback (most recent call last):
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 429, in api_reservations_2
+    db_connection = conectar_db()
+                    ^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 30, in conectar_db
+    return mysql.connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\__init__.py", line 179, in connect
+    return MySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 95, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\abstracts.py", line 716, in connect
+    self._open_connection()
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 208, in _open_connection
+    self._do_auth(self._user, self._password,
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 137, in _do_auth
+    packet = self._protocol.make_auth(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 99, in make_auth
+    packet += self._auth_response(client_flags, username, password,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 58, in _auth_response
+    auth = get_auth_plugin(auth_plugin)(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\authentication.py", line 190, in get_auth_plugin
+    raise errors.NotSupportedError(
+mysql.connector.errors.NotSupportedError: Authentication plugin 'caching_sha2_password' is not supported
+2025-01-27 14:36:30,703 - ERROR - Exception on /chatbot [GET]
+Traceback (most recent call last):
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 409, in home
+    iniciar_nueva_sesion()
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 67, in iniciar_nueva_sesion
+    db_connection = conectar_db()
+                    ^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 30, in conectar_db
+    return mysql.connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\__init__.py", line 179, in connect
+    return MySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 95, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\abstracts.py", line 716, in connect
+    self._open_connection()
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 208, in _open_connection
+    self._do_auth(self._user, self._password,
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 137, in _do_auth
+    packet = self._protocol.make_auth(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 99, in make_auth
+    packet += self._auth_response(client_flags, username, password,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 58, in _auth_response
+    auth = get_auth_plugin(auth_plugin)(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\authentication.py", line 190, in get_auth_plugin
+    raise errors.NotSupportedError(
+mysql.connector.errors.NotSupportedError: Authentication plugin 'caching_sha2_password' is not supported
+2025-01-27 14:38:14,356 - INFO - Página principal cargada.
+2025-01-27 14:38:17,926 - ERROR - Exception on /chatbot [GET]
+Traceback (most recent call last):
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 409, in home
+    iniciar_nueva_sesion()
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 67, in iniciar_nueva_sesion
+    db_connection = conectar_db()
+                    ^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 30, in conectar_db
+    return mysql.connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\__init__.py", line 179, in connect
+    return MySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 95, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\abstracts.py", line 716, in connect
+    self._open_connection()
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 208, in _open_connection
+    self._do_auth(self._user, self._password,
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 137, in _do_auth
+    packet = self._protocol.make_auth(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 99, in make_auth
+    packet += self._auth_response(client_flags, username, password,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 58, in _auth_response
+    auth = get_auth_plugin(auth_plugin)(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\authentication.py", line 190, in get_auth_plugin
+    raise errors.NotSupportedError(
+mysql.connector.errors.NotSupportedError: Authentication plugin 'caching_sha2_password' is not supported
+2025-01-27 14:38:25,280 - ERROR - Exception on /api/reservations_2 [GET]
+Traceback (most recent call last):
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 429, in api_reservations_2
+    db_connection = conectar_db()
+                    ^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 30, in conectar_db
+    return mysql.connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\__init__.py", line 179, in connect
+    return MySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 95, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\abstracts.py", line 716, in connect
+    self._open_connection()
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 208, in _open_connection
+    self._do_auth(self._user, self._password,
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 137, in _do_auth
+    packet = self._protocol.make_auth(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 99, in make_auth
+    packet += self._auth_response(client_flags, username, password,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 58, in _auth_response
+    auth = get_auth_plugin(auth_plugin)(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\authentication.py", line 190, in get_auth_plugin
+    raise errors.NotSupportedError(
+mysql.connector.errors.NotSupportedError: Authentication plugin 'caching_sha2_password' is not supported
+2025-01-27 14:38:30,169 - ERROR - Exception on /api/reservations_2 [GET]
+Traceback (most recent call last):
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 429, in api_reservations_2
+    db_connection = conectar_db()
+                    ^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 30, in conectar_db
+    return mysql.connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\__init__.py", line 179, in connect
+    return MySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 95, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\abstracts.py", line 716, in connect
+    self._open_connection()
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 208, in _open_connection
+    self._do_auth(self._user, self._password,
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 137, in _do_auth
+    packet = self._protocol.make_auth(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 99, in make_auth
+    packet += self._auth_response(client_flags, username, password,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 58, in _auth_response
+    auth = get_auth_plugin(auth_plugin)(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\authentication.py", line 190, in get_auth_plugin
+    raise errors.NotSupportedError(
+mysql.connector.errors.NotSupportedError: Authentication plugin 'caching_sha2_password' is not supported
+2025-01-27 14:38:35,186 - ERROR - Exception on /api/reservations_2 [GET]
+Traceback (most recent call last):
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 429, in api_reservations_2
+    db_connection = conectar_db()
+                    ^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 30, in conectar_db
+    return mysql.connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\__init__.py", line 179, in connect
+    return MySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 95, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\abstracts.py", line 716, in connect
+    self._open_connection()
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 208, in _open_connection
+    self._do_auth(self._user, self._password,
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 137, in _do_auth
+    packet = self._protocol.make_auth(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 99, in make_auth
+    packet += self._auth_response(client_flags, username, password,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 58, in _auth_response
+    auth = get_auth_plugin(auth_plugin)(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\authentication.py", line 190, in get_auth_plugin
+    raise errors.NotSupportedError(
+mysql.connector.errors.NotSupportedError: Authentication plugin 'caching_sha2_password' is not supported
+2025-01-27 14:38:40,175 - ERROR - Exception on /api/reservations_2 [GET]
+Traceback (most recent call last):
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 429, in api_reservations_2
+    db_connection = conectar_db()
+                    ^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 30, in conectar_db
+    return mysql.connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\__init__.py", line 179, in connect
+    return MySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 95, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\abstracts.py", line 716, in connect
+    self._open_connection()
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 208, in _open_connection
+    self._do_auth(self._user, self._password,
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 137, in _do_auth
+    packet = self._protocol.make_auth(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 99, in make_auth
+    packet += self._auth_response(client_flags, username, password,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 58, in _auth_response
+    auth = get_auth_plugin(auth_plugin)(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\authentication.py", line 190, in get_auth_plugin
+    raise errors.NotSupportedError(
+mysql.connector.errors.NotSupportedError: Authentication plugin 'caching_sha2_password' is not supported
+2025-01-27 14:38:45,171 - ERROR - Exception on /api/reservations_2 [GET]
+Traceback (most recent call last):
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 429, in api_reservations_2
+    db_connection = conectar_db()
+                    ^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 30, in conectar_db
+    return mysql.connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\__init__.py", line 179, in connect
+    return MySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 95, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\abstracts.py", line 716, in connect
+    self._open_connection()
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 208, in _open_connection
+    self._do_auth(self._user, self._password,
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 137, in _do_auth
+    packet = self._protocol.make_auth(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 99, in make_auth
+    packet += self._auth_response(client_flags, username, password,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 58, in _auth_response
+    auth = get_auth_plugin(auth_plugin)(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\authentication.py", line 190, in get_auth_plugin
+    raise errors.NotSupportedError(
+mysql.connector.errors.NotSupportedError: Authentication plugin 'caching_sha2_password' is not supported
+2025-01-27 14:38:50,233 - ERROR - Exception on /api/reservations_2 [GET]
+Traceback (most recent call last):
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 429, in api_reservations_2
+    db_connection = conectar_db()
+                    ^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 30, in conectar_db
+    return mysql.connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\__init__.py", line 179, in connect
+    return MySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 95, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\abstracts.py", line 716, in connect
+    self._open_connection()
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 208, in _open_connection
+    self._do_auth(self._user, self._password,
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 137, in _do_auth
+    packet = self._protocol.make_auth(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 99, in make_auth
+    packet += self._auth_response(client_flags, username, password,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 58, in _auth_response
+    auth = get_auth_plugin(auth_plugin)(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\authentication.py", line 190, in get_auth_plugin
+    raise errors.NotSupportedError(
+mysql.connector.errors.NotSupportedError: Authentication plugin 'caching_sha2_password' is not supported
+2025-01-27 14:38:55,168 - ERROR - Exception on /api/reservations_2 [GET]
+Traceback (most recent call last):
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 429, in api_reservations_2
+    db_connection = conectar_db()
+                    ^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 30, in conectar_db
+    return mysql.connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\__init__.py", line 179, in connect
+    return MySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 95, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\abstracts.py", line 716, in connect
+    self._open_connection()
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 208, in _open_connection
+    self._do_auth(self._user, self._password,
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 137, in _do_auth
+    packet = self._protocol.make_auth(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 99, in make_auth
+    packet += self._auth_response(client_flags, username, password,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 58, in _auth_response
+    auth = get_auth_plugin(auth_plugin)(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\authentication.py", line 190, in get_auth_plugin
+    raise errors.NotSupportedError(
+mysql.connector.errors.NotSupportedError: Authentication plugin 'caching_sha2_password' is not supported
+2025-01-27 14:39:00,169 - ERROR - Exception on /api/reservations_2 [GET]
+Traceback (most recent call last):
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 429, in api_reservations_2
+    db_connection = conectar_db()
+                    ^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 30, in conectar_db
+    return mysql.connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\__init__.py", line 179, in connect
+    return MySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 95, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\abstracts.py", line 716, in connect
+    self._open_connection()
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 208, in _open_connection
+    self._do_auth(self._user, self._password,
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 137, in _do_auth
+    packet = self._protocol.make_auth(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 99, in make_auth
+    packet += self._auth_response(client_flags, username, password,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 58, in _auth_response
+    auth = get_auth_plugin(auth_plugin)(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\authentication.py", line 190, in get_auth_plugin
+    raise errors.NotSupportedError(
+mysql.connector.errors.NotSupportedError: Authentication plugin 'caching_sha2_password' is not supported
+2025-01-27 14:39:05,169 - ERROR - Exception on /api/reservations_2 [GET]
+Traceback (most recent call last):
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 429, in api_reservations_2
+    db_connection = conectar_db()
+                    ^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 30, in conectar_db
+    return mysql.connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\__init__.py", line 179, in connect
+    return MySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 95, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\abstracts.py", line 716, in connect
+    self._open_connection()
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 208, in _open_connection
+    self._do_auth(self._user, self._password,
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 137, in _do_auth
+    packet = self._protocol.make_auth(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 99, in make_auth
+    packet += self._auth_response(client_flags, username, password,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 58, in _auth_response
+    auth = get_auth_plugin(auth_plugin)(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\authentication.py", line 190, in get_auth_plugin
+    raise errors.NotSupportedError(
+mysql.connector.errors.NotSupportedError: Authentication plugin 'caching_sha2_password' is not supported
+2025-01-27 14:39:10,170 - ERROR - Exception on /api/reservations_2 [GET]
+Traceback (most recent call last):
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 429, in api_reservations_2
+    db_connection = conectar_db()
+                    ^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 30, in conectar_db
+    return mysql.connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\__init__.py", line 179, in connect
+    return MySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 95, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\abstracts.py", line 716, in connect
+    self._open_connection()
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 208, in _open_connection
+    self._do_auth(self._user, self._password,
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 137, in _do_auth
+    packet = self._protocol.make_auth(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 99, in make_auth
+    packet += self._auth_response(client_flags, username, password,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 58, in _auth_response
+    auth = get_auth_plugin(auth_plugin)(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\authentication.py", line 190, in get_auth_plugin
+    raise errors.NotSupportedError(
+mysql.connector.errors.NotSupportedError: Authentication plugin 'caching_sha2_password' is not supported
+2025-01-27 14:39:15,184 - ERROR - Exception on /api/reservations_2 [GET]
+Traceback (most recent call last):
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 429, in api_reservations_2
+    db_connection = conectar_db()
+                    ^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 30, in conectar_db
+    return mysql.connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\__init__.py", line 179, in connect
+    return MySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 95, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\abstracts.py", line 716, in connect
+    self._open_connection()
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 208, in _open_connection
+    self._do_auth(self._user, self._password,
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 137, in _do_auth
+    packet = self._protocol.make_auth(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 99, in make_auth
+    packet += self._auth_response(client_flags, username, password,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 58, in _auth_response
+    auth = get_auth_plugin(auth_plugin)(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\authentication.py", line 190, in get_auth_plugin
+    raise errors.NotSupportedError(
+mysql.connector.errors.NotSupportedError: Authentication plugin 'caching_sha2_password' is not supported
+2025-01-27 14:39:20,193 - ERROR - Exception on /api/reservations_2 [GET]
+Traceback (most recent call last):
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 429, in api_reservations_2
+    db_connection = conectar_db()
+                    ^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 30, in conectar_db
+    return mysql.connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\__init__.py", line 179, in connect
+    return MySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 95, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\abstracts.py", line 716, in connect
+    self._open_connection()
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 208, in _open_connection
+    self._do_auth(self._user, self._password,
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 137, in _do_auth
+    packet = self._protocol.make_auth(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 99, in make_auth
+    packet += self._auth_response(client_flags, username, password,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 58, in _auth_response
+    auth = get_auth_plugin(auth_plugin)(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\authentication.py", line 190, in get_auth_plugin
+    raise errors.NotSupportedError(
+mysql.connector.errors.NotSupportedError: Authentication plugin 'caching_sha2_password' is not supported
+2025-01-27 14:39:25,918 - ERROR - Exception on /api/reservations_2 [GET]
+Traceback (most recent call last):
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 429, in api_reservations_2
+    db_connection = conectar_db()
+                    ^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 30, in conectar_db
+    return mysql.connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\__init__.py", line 179, in connect
+    return MySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 95, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\abstracts.py", line 716, in connect
+    self._open_connection()
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 208, in _open_connection
+    self._do_auth(self._user, self._password,
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 137, in _do_auth
+    packet = self._protocol.make_auth(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 99, in make_auth
+    packet += self._auth_response(client_flags, username, password,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 58, in _auth_response
+    auth = get_auth_plugin(auth_plugin)(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\authentication.py", line 190, in get_auth_plugin
+    raise errors.NotSupportedError(
+mysql.connector.errors.NotSupportedError: Authentication plugin 'caching_sha2_password' is not supported
+2025-01-27 14:39:30,911 - ERROR - Exception on /api/reservations_2 [GET]
+Traceback (most recent call last):
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 429, in api_reservations_2
+    db_connection = conectar_db()
+                    ^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\app.py", line 30, in conectar_db
+    return mysql.connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\__init__.py", line 179, in connect
+    return MySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 95, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\abstracts.py", line 716, in connect
+    self._open_connection()
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 208, in _open_connection
+    self._do_auth(self._user, self._password,
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\connection.py", line 137, in _do_auth
+    packet = self._protocol.make_auth(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 99, in make_auth
+    packet += self._auth_response(client_flags, username, password,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\protocol.py", line 58, in _auth_response
+    auth = get_auth_plugin(auth_plugin)(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T470\Desktop\MESLAT PROJECT\TheNormalQro - Kopie - 3\venv\Lib\site-packages\mysql\connector\authentication.py", line 190, in get_auth_plugin
+    raise errors.NotSupportedError(
+mysql.connector.errors.NotSupportedError: Authentication plugin 'caching_sha2_password' is not supported

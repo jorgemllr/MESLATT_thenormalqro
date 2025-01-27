@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Interface con Menú</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        /* Estilos para el contenedor de video y la imagen de fondo */
+        .video-container, .image-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Coloca estos elementos debajo del contenido */
+        }
+
+        .video-container video {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Asegura que el video cubra el área del contenedor */
+        }
+
+        .image-container {
+            background-image: url('{{ url_for("static", filename="images/London.jpg") }}');
+            background-size: cover; /* Asegura que la imagen cubra todo el área */
+            background-position: center; /* Centra la imagen */
+            display: none; /* Por defecto, la imagen está oculta */
+        }
+
+        /* Muestra la imagen y oculta el video cuando es necesario */
+        .show-image .video-container {
+            display: none;
+        }
+
+        .show-image .image-container {
+            display: block;
+        }
+    </style>
+</head>
+<body class="show-image"> <!-- Cambia a 'show-video' para mostrar el video -->
+    <div class="side-container left-container"></div>
+    <div class="side-container right-container"></div>
+    <div class="container">
+        <!-- Contenedor para el video -->
+        <div class="video-container">
+            <video autoplay loop playsinline muted>
+                <source src="{{ url_for('static', filename='videos/video.mp4') }}" type="video/mp4">
+                Tu navegador no soporta el video HTML5.
+            </video>
+        </div>
+
+        <!-- Contenedor para la imagen de fondo -->
+        <div class="image-container"></div>
+
+        <img src="{{ url_for('static', filename='images/\u30b6\u30fb\u30ce\u30fc\u30de\u30eb.png') }}" alt="Imagen 左" class="image-left">
+        <img src="{{ url_for('static', filename='images/\u30b6\u30fb\u30ce\u30fc\u30de\u30eb.png') }}" alt="Imagen 右" class="image-right">
+        
+        <!-- Imagen del logo centrada y más grande -->
+        <img src="{{ url_for('static', filename='images/the-normal-club2.png') }}" alt="Logo" class="logo">
+
+        <!-- Contenedor de botones -->
+        <div class="button-container">
+            <a href="http://192.168.100.121:5000/chatbot" target="_blank" class="button button-custom">RESERVAR</a>
+            <a href="{{ url_for('static', filename='pdfs/pdf1.pdf') }}" target="_blank" class="button button-custom">MENU</a>
+            <a href="{{ url_for('static', filename='pdfs/EXPERIENCES.pdf') }}" target="_blank" class="button button-custom">EXPERIENCES</a>
+        </div>
+        
+        <div class="text">THE NORMAL SPECIAL EDITION / ALL RIGHTS RESERVED. THE NORMAL AND ALL RELATED TITLES, LOGOS, AND CHARACTERS ARE NOT TRADEMARKS OF THE NORMAL INTERNATIONAL INC. THIS CLUB CONTAINS SENSITIVE CONTENT WHICH SOME PEOPLE MAY FIND OFFENSIVE OR DISTURBING.</div>
+    </div>
+    <script>
+        // Aplicar animación en dispositivos táctiles al hacer clic en un botón
+        const buttons = document.querySelectorAll('.button');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                button.classList.add('button-clicked');
+                setTimeout(() => {
+                    button.classList.remove('button-clicked');
+                }, 300); // Duración de la animación (coincide con el tiempo de transición)
+            });
+        });
+
+        // Asegurar que el video se reproduzca correctamente
+        document.addEventListener("DOMContentLoaded", function() {
+            const video = document.querySelector("video");
+            if (video) {
+                video.play().catch((error) => {
+                    console.error("Error al reproducir el video:", error);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
