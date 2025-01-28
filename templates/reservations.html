@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,13 +11,13 @@
     <script>
         function fetchReservations() {
             const searchTerm = $('#search-bar').val().toLowerCase(); // Obtener el término de búsqueda
-    
+
             $.ajax({
-                url: '/api/reservations_2',
+                url: '/api/e5b0928f8e8028fe7581a26a905832293f7f2320afc4f6ef5690c67d9ec68a28',
                 method: 'GET',
-                success: function(data) {
+                success: function (data) {
                     let tableBody = '';
-                    data.forEach(function(row) {
+                    data.forEach(function (row) {
                         const buttonClass = row.status === "Confirmado" ? "status-btn confirmed" : "status-btn";
                         tableBody += `
                             <tr>
@@ -40,12 +41,12 @@
                                 </td>
                             </tr>`;
                     });
-    
+
                     $('#reservations-table tbody').html(tableBody);
-    
+
                     // Aplicar el filtro solo si hay texto en el cuadro de búsqueda
                     if (searchTerm) {
-                        $('#reservations-table tbody tr').each(function() {
+                        $('#reservations-table tbody tr').each(function () {
                             const rowText = $(this).text().toLowerCase();
                             $(this).toggle(rowText.includes(searchTerm));
                         });
@@ -53,11 +54,11 @@
                 }
             });
         }
-    
+
         function updateStatus(button) {
             const reservationId = button.getAttribute("data-id");
             const newStatus = button.textContent.trim() === "Pendiente" ? "Confirmado" : "Pendiente";
-    
+
             // Actualizar visualmente el botón
             button.textContent = newStatus;
             if (newStatus === "Confirmado") {
@@ -65,40 +66,41 @@
             } else {
                 button.classList.remove("confirmed");
             }
-    
+
             // Enviar el cambio al backend
             $.ajax({
                 url: '/api/update-status',
                 method: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify({ id: reservationId, status: newStatus }),
-                success: function(response) {
+                success: function (response) {
                     console.log("Estado actualizado correctamente:", response);
                     fetchReservations(); // Sincronizar la tabla con la base de datos después de actualizar el estado
                 },
-                error: function(error) {
+                error: function (error) {
                     console.error("Error al actualizar el estado:", error);
                 }
             });
         }
-    
-        $(document).ready(function() {
+
+        $(document).ready(function () {
             fetchReservations();  // Cargar al abrir la página
-    
+
             // Intervalo de actualización con lógica para mantener el filtro
             setInterval(fetchReservations, 5000);
-    
+
             // Implementar la función de búsqueda
-            $('#search-bar').on('input', function() {
+            $('#search-bar').on('input', function () {
                 const searchTerm = $(this).val().toLowerCase();
-                $('#reservations-table tbody tr').each(function() {
+                $('#reservations-table tbody tr').each(function () {
                     const rowText = $(this).text().toLowerCase();
                     $(this).toggle(rowText.includes(searchTerm));
                 });
             });
         });
-    </script>    
+    </script>
 </head>
+
 <body>
     <div class="header-container">
         <h1>Reservations</h1>
@@ -126,4 +128,5 @@
         </tbody>
     </table>
 </body>
+
 </html>

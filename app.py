@@ -149,7 +149,7 @@ def actualizar_reservacion(session_id):
         if not existe_reservacion:
             sql_generado = generar_sql(datos_reservacion, hash_reservacion)
             if sql_generado and ejecutar_sql_en_reservations(sql_generado):
-                enlace_invitacion = f"http://192.168.100.121:5000/invitacion/{hash_reservacion}"
+                enlace_invitacion = f"https://www.meslatt.com/thenormalqro/entrada/{hash_reservacion}"
                 ruta_imagen = url_for('static', filename='images/Imagen.jpg')
                 
                 # Obtener el nombre del usuario
@@ -398,13 +398,13 @@ def configure_logging():
 # Llamar la función de configuración antes de que arranque la aplicación
 configure_logging()
 
-@app.route('/')
+@app.route('/thenormalqro/logs')
 def index():
     app.logger.info("Página principal cargada.")
     return "Hola, Flask con logs rotados!"
 
 # Rutas de Flask
-@app.route('/chatbot')
+@app.route('/thenormalqro/chatbot')
 def home():
     iniciar_nueva_sesion()
     conversation_history_2.clear()  # Limpiar el historial de la sesión anterior
@@ -424,7 +424,7 @@ def ask():
     response = chatbot_response(user_input, context)
     return jsonify({'bot_response': response, 'html_response': True})
 
-@app.route('/api/reservations_2')
+@app.route('/api/e5b0928f8e8028fe7581a26a905832293f7f2320afc4f6ef5690c67d9ec68a28')
 def api_reservations_2():
     db_connection = conectar_db()
     cursor = db_connection.cursor()
@@ -475,11 +475,11 @@ def update_status():
         cursor.close()
         db_connection.close()
 
-@app.route('/reservations_2')
+@app.route('/thenormalqro/e5b0928f8e8028fe7581a26a905832293f7f2320afc4f6ef5690c67d9ec68a28')
 def show_reservations():
     return render_template('reservations.html')
 
-@app.route('/invitacion/<hash>')
+@app.route('/thenormalqro/tarjeta/<hash>')
 def invitacion(hash):
     try:
         # Conexión a la base de datos
@@ -540,7 +540,7 @@ def invitacion(hash):
             cursor.close()
             db.close()
 
-@app.route('/menu')
+@app.route('/thenormalqro/menu')
 def menu():
     return render_template('Menu.html')
 
