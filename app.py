@@ -149,7 +149,7 @@ def actualizar_reservacion(session_id):
         if not existe_reservacion:
             sql_generado = generar_sql(datos_reservacion, hash_reservacion)
             if sql_generado and ejecutar_sql_en_reservations(sql_generado):
-                enlace_invitacion = f"https://www.meslatt.com/thenormalqro/entrada/{hash_reservacion}"
+                enlace_invitacion = f"https://www.meslatt.com/thenormalqro/tarjeta/{hash_reservacion}"
                 ruta_imagen = url_for('static', filename='images/Imagen.jpg')
                 
                 # Obtener el nombre del usuario
