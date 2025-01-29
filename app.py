@@ -404,7 +404,7 @@ def index():
     return "Hola, Flask con logs rotados!"
 
 # Rutas de Flask
-@app.route('/thenormalqro/chatbot')
+@app.route('/chatbot')
 def home():
     iniciar_nueva_sesion()
     conversation_history_2.clear()  # Limpiar el historial de la sesión anterior
@@ -479,7 +479,7 @@ def update_status():
 def show_reservations():
     return render_template('reservations.html')
 
-@app.route('/thenormalqro/tarjeta/<hash>')
+@app.route('/tarjeta/<hash>')
 def invitacion(hash):
     try:
         # Conexión a la base de datos
@@ -540,7 +540,7 @@ def invitacion(hash):
             cursor.close()
             db.close()
 
-@app.route('/thenormalqro/menu')
+@app.route('/')
 def menu():
     return render_template('Menu.html')
 
