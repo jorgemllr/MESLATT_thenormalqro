@@ -53,7 +53,8 @@ shader-art {
 
 .chat-container {
     width: 420px;
-    height: 100vh; /* Hace que el contenedor del chat ocupe toda la altura de la pantalla */
+    height: 100vh;
+    /* Hace que el contenedor del chat ocupe toda la altura de la pantalla */
     border: 1px solid #000000;
     border-radius: 10px;
     overflow: hidden;
@@ -84,7 +85,8 @@ shader-art {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    background: rgba(0, 0, 0, 0.6); /* Fondo semitransparente para contrastar los mensajes */
+    background: rgba(0, 0, 0, 0.6);
+    /* Fondo semitransparente para contrastar los mensajes */
 }
 
 .chat-input {
@@ -92,6 +94,9 @@ shader-art {
     padding: 10px;
     border-top: 1px solid #000000;
     background: linear-gradient(to right, black, #c70000);
+    /* Asegura que el input esté pegado al footer */
+    margin-top: auto;
+    /* Empuja el input hacia abajo */
 }
 
 .chat-input input {
@@ -102,7 +107,8 @@ shader-art {
     border-radius: 20px;
     outline: none;
     color: white;
-    font-size: 16px; /* Ajusta el tamaño de la fuente */
+    font-size: 16px;
+    /* Ajusta el tamaño de la fuente */
 }
 
 .chat-input button {
@@ -117,8 +123,10 @@ shader-art {
 }
 
 .chat-input button i {
-    font-size: 20px; /* Ajusta el tamaño del ícono */
-    margin: 0; /* Elimina el margen alrededor */
+    font-size: 20px;
+    /* Ajusta el tamaño del ícono */
+    margin: 0;
+    /* Elimina el margen alrededor */
 }
 
 .message {
@@ -126,7 +134,8 @@ shader-art {
     align-items: center;
     padding: 10px 15px;
     border-radius: 15px;
-    max-width: 75%; /* Limita el ancho de cada mensaje */
+    max-width: 75%;
+    /* Limita el ancho de cada mensaje */
     margin-bottom: 10px;
 }
 
@@ -134,19 +143,230 @@ shader-art {
     background: #c70000;
     align-self: flex-end;
     color: white;
-    border-radius: 15px 15px 0px 15px; /* Borde redondeado tipo "nube" */
+    border-radius: 15px 15px 0px 15px;
+    /* Borde redondeado tipo "nube" */
     margin-left: auto;
+}
+
+.bot-message-container {
+    display: flex;
+    align-items: flex-start;
+    /* Alinea los elementos al borde superior */
+    max-width: 75%;
+    margin-bottom: 10px;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.bot-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+    border: 2px solid #c70000;
+    align-self: flex-start;
+    /* Fuerza la alineación superior de la imagen */
+    margin-top: 0;
+    /* Elimina cualquier margen superior */
 }
 
 .bot-message {
     background: #2b2b2b;
-    align-self: flex-start;
     color: white;
-    border-radius: 15px 15px 15px 0px; /* Borde redondeado tipo "nube" */
-    margin-right: auto;
-    margin-left: 10px;
+    padding: 10px 15px;
+    border-radius: 15px 15px 15px 0px;
+    max-width: calc(100% - 50px);
+    margin-top: 0;
+    /* Asegura que no haya margen superior */
 }
 
-.dg.ac { 
+.bot-message .MathJax {
+    font-size: 90%;
+    /* Ajusta el tamaño de las ecuaciones */
+    line-height: 1.5;
+    /* Ajusta el espaciado entre líneas */
+}
+
+.dg.ac {
     display: none;
+}
+
+.chat-footer {
+    background-color: #f0f0f0;
+    padding: 8px;
+    text-align: center;
+    /* Asegura que el footer esté en la parte inferior */
+    margin-top: auto;
+    /* Empuja el footer hacia abajo */
+}
+
+.chat-footer p {
+    margin: 0;
+    font-size: 12px;
+    color: #000000;
+}
+
+.chat-footer a {
+    color: #c70000;
+    text-decoration: underline;
+}
+
+.disclaimer-header,
+.terms-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.business-logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px solid #c70000;
+    margin-right: 10px;
+    position: relative;
+    z-index: 2;
+}
+
+.business-name {
+    font-size: 48px;
+    font-weight: bold;
+    color: #c70000;
+    margin: 0;
+    flex-grow: 1;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    text-shadow:
+        -1px -1px 0 black,
+        1px -1px 0 black,
+        -1px 1px 0 black,
+        1px 1px 0 black,
+        -1px 0px 0 black,
+        1px 0px 0 black,
+        0px -1px 0 black,
+        0px 1px 0 black;
+}
+
+.terms-and-conditions {
+    font-size: 28px;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    margin: 0;
+    flex-grow: 1;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.terms-container {
+    margin-top: 10px;
+    font-size: 14px;
+    color: rgb(0, 0, 0);
+    text-align: center;
+}
+
+.terms-container a {
+    color: #c70000;
+    text-decoration: underline;
+}
+
+.hidden {
+    display: none;
+}
+
+.disclaimer-box,
+.terms-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 350px;
+    border-radius: 10px;
+    z-index: 1000;
+    text-align: left;
+    color: rgb(0, 0, 0);
+}
+
+.divider {
+    width: 100%;
+    height: 2px;
+    background-color: rgb(0, 0, 0);
+    margin: 10px 0;
+    border: none;
+}
+
+.disclaimer-text,
+.terms-text {
+    text-align: justify;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.accept-button,
+.back-button {
+    margin-top: 10px;
+    background: #c70000;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.accept-button:hover,
+.back-button:hover {
+    background: #831818;
+}
+
+/* Aumenta el tamaño del checkbox */
+input[type="checkbox"] {
+    accent-color: #c70000;
+    transform: scale(1.5);
+    /* Hace la palomita 1.5 veces más grande */
+}
+
+.terms-content {
+    flex-grow: 1;
+    overflow-y: auto;
+    /* Habilita el scroll cuando sea necesario */
+    max-height: 250px;
+    /* Altura máxima dentro del contenedor */
+    padding-right: 10px;
+    /* Espacio para evitar que el texto se corte con la barra de desplazamiento */
+}
+
+/* Personalización de la barra de scroll */
+.terms-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.terms-content::-webkit-scrollbar-thumb {
+    background-color: #c70000;
+    border-radius: 4px;
+}
+
+.terms-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.disclaimer-text a {
+    color: #c70000;
+    /* Color para todos los enlaces */
+    text-decoration: underline;
+    /* Asegura que todos los enlaces estén subrayados */
+}
+
+/* Estilo específico para el enlace de MESLAT */
+.disclaimer-text a[href="https://meslattcom.com"] {
+    color: #c70000;
+    /* Color para el enlace de MESLAT */
 }

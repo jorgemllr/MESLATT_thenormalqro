@@ -1,12 +1,14 @@
 import hashlib
 import os
+from dotenv import load_dotenv
 import openai
 import qrcode
 import io
 import base64
 import json
-import re  # noqa: F401
-from flask import Flask, request, jsonify, render_template, url_for
+import re
+from flask import Flask, request, jsonify, render_template, session, Response, url_for
+import secrets
 import sqlite3
 import mysql.connector
 from datetime import datetime
@@ -15,24 +17,54 @@ import pymysql
 import logging
 from logging.handlers import RotatingFileHandler
 from apscheduler.schedulers.background import BackgroundScheduler
+import unicodedata
+
+load_dotenv()
+
+def eliminar_acentos(texto):
+    """
+    Elimina acentos y caracteres especiales de un texto.
+    """
+    texto = unicodedata.normalize('NFD', texto)
+    texto = texto.encode('ascii', 'ignore')
+    texto = texto.decode("utf-8")
+    texto = re.sub(r'[^a-zA-Z0-9 ]', '', texto)
+    return texto
 
 app = Flask(__name__)
 
-# Clave de API de OpenAI
-openai.api_key = "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"
+from flask_session import Session
 
-# Variables globales para el historial de conversación y el ID de sesión
-conversation_history_2 = []
-session_id = None
+app.config['SESSION_TYPE'] = 'filesystem'  # Guardar sesiones en archivos (puedes cambiarlo a 'sqlalchemy' para usar una DB)
+app.config['SESSION_PERMANENT'] = False
+app.config['SESSION_FILE_DIR'] = './flask_session'  # Directorio donde se guardan las sesiones
+
+# Configuración para permitir sesiones dentro de iframes
+app.config['SESSION_COOKIE_SAMESITE'] = 'None'
+app.config['SESSION_COOKIE_SECURE'] = True
+
+Session(app)
+
+# Clave de API de OpenAI
+openai.api_key = os.getenv("OPENAI_API_KEY")
+
+# Configurar credenciales de la base de datos desde variables de entorno
+DB_HOST = os.getenv("DB_HOST")
+DB_USER = os.getenv("DB_USER")
+DB_PASSWORD = os.getenv("DB_PASSWORD")
+DB_NAME = os.getenv("DB_NAME")
+DB_PORT = os.getenv("DB_PORT")
+
+app.secret_key = secrets.token_hex(16)  # Clave segura para sesiones
 
 # Conexión a la base de datos unificada
 def conectar_db():
     return mysql.connector.connect(
-        host="roundhouse.proxy.rlwy.net",
-        user="root",
-        password="PftmussYrgKSEkMxNpktZlPpoVICGEDv",
-        database="meslatt_data",
-        port=50455
+        host=DB_HOST,
+        user=DB_USER,
+        password=DB_PASSWORD,
+        database=DB_NAME,
+        port=int(DB_PORT)  # Asegurar que el puerto es un número
     )
 
 # Función para generar el hash único
@@ -63,30 +95,32 @@ def generar_hash(nombre, id):
 
 # Iniciar una nueva sesión y crear un nuevo session_id
 def iniciar_nueva_sesion():
-    global session_id
     db_connection = conectar_db()
     cursor = db_connection.cursor()
 
-    # Insertar una nueva fila para el session_id actual
     query = "INSERT INTO conversation_history_2 (conversation) VALUES (%s)"
-    cursor.execute(query, ("",))  # Crear fila vacía para la sesión
+    cursor.execute(query, ("",))  # Crear fila vacía
     db_connection.commit()
 
-    # Obtener el session_id recién creado
-    session_id = cursor.lastrowid
+    session_id = cursor.lastrowid  # Obtener el ID de la sesión creada
+    session['session_id'] = session_id  # Guardar en la sesión del usuario
 
     cursor.close()
     db_connection.close()
 
 # Función para actualizar el historial en la base de datos del chatbot y sincronizar con reservations_db
 def guardar_historial_db():
+    if 'session_id' not in session or 'conversation_history' not in session:
+        return  # No hay sesión activa o historial vacío
+
+    session_id = session['session_id']
+    conversation_history = session['conversation_history']
+
     db_connection = conectar_db()
     cursor = db_connection.cursor()
 
-    # Concatenar todo el historial de interacciones (sin el contexto inicial de Data.txt)
-    historial_texto = "\n".join([f"{entry['role']}: {entry['content']}" for entry in conversation_history_2 if entry['role'] != 'system'])
-    
-    # Actualizar la fila con el session_id actual con el historial completo
+    historial_texto = "\n".join([f"{entry['role']}: {entry['content']}" for entry in conversation_history if entry['role'] != 'system'])
+
     query = "UPDATE conversation_history_2 SET conversation = %s WHERE session_id = %s"
     cursor.execute(query, (historial_texto, session_id))
     db_connection.commit()
@@ -94,8 +128,7 @@ def guardar_historial_db():
     cursor.close()
     db_connection.close()
 
-    # Llamar a actualizar_reservacion para sincronizar los datos en reservations_db
-    actualizar_reservacion(session_id)
+    actualizar_reservacion(session['session_id'])
 
 # Cargar contexto desde un archivo
 def load_data(file_path):
@@ -104,22 +137,31 @@ def load_data(file_path):
 
 # Generar respuesta del chatbot usando OpenAI API
 def chatbot_response(prompt, context):
-    if len(conversation_history_2) == 0:
-        conversation_history_2.append({"role": "system", "content": context})
+    if 'conversation_history' not in session:
+        session['conversation_history'] = [{"role": "system", "content": context}]
 
-    conversation_history_2.append({"role": "user", "content": prompt})
+    # Cargar el historial de la sesión actual
+    conversation_history = session['conversation_history']
+    conversation_history.append({"role": "user", "content": prompt})
 
+    # Generar respuesta con OpenAI
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
-        messages=conversation_history_2
+        messages=conversation_history
     )
 
     assistant_response = response['choices'][0]['message']['content']
-    conversation_history_2.append({"role": "assistant", "content": assistant_response})
 
-    guardar_historial_db()  # Guardar el historial en la base de datos y sincronizar reservations_db
+    # Convertir notación de LaTeX correctamente
+    formatted_response = assistant_response.replace("$$", r"\[").replace("$$", r"\]")  # Bloques LaTeX
+    formatted_response = formatted_response.replace("$", r"\(").replace("$", r"\)")  # Inline LaTeX
 
-    return assistant_response
+    conversation_history.append({"role": "assistant", "content": formatted_response})
+    session['conversation_history'] = conversation_history
+
+    guardar_historial_db()
+
+    return formatted_response  # Asegurar que devuelve solo el texto
 
 # Función para actualizar automáticamente la base de datos de reservaciones
 def actualizar_reservacion(session_id): 
@@ -167,7 +209,11 @@ def actualizar_reservacion(session_id):
                     </p>
                 </div>
                 """
-                conversation_history_2.append({"role": "assistant", "content": mensaje_invitacion})
+                if 'conversation_history' not in session:
+                    session['conversation_history'] = []
+    
+                session['conversation_history'].append({"role": "assistant", "content": mensaje_invitacion})
+
                 guardar_historial_db()
 
 # Interpretar el texto de reservación usando OpenAI
@@ -232,7 +278,7 @@ def generar_sql(datos, hash_reservacion):
     estado = 'Pendiente'  # Siempre 'Pendiente' para el estado
     
     sql = f"INSERT INTO reservations_2 (id, nombre, usuario_instagram, telefono_contacto, fecha_reservacion, numero_personas, mesa, consumo_minimo, motivo, notas, estado, reservation_hash) " \
-          f"VALUES ({session_id}, '{datos['nombre']}', '{usuario_instagram}', '{telefono_contacto}', '{datos['fecha_reservacion']}', " \
+          f"VALUES ({session['session_id']}, '{datos['nombre']}', '{usuario_instagram}', '{telefono_contacto}', '{datos['fecha_reservacion']}', " \
           f"{datos['numero_personas']}, '{mesa}', {datos['consumo_minimo']}, '{motivo}', '{notas}', " \
           f"'{estado}', '{hash_reservacion}')"
     
@@ -406,8 +452,8 @@ def index():
 # Rutas de Flask
 @app.route('/chatbot')
 def home():
-    iniciar_nueva_sesion()
-    conversation_history_2.clear()  # Limpiar el historial de la sesión anterior
+    iniciar_nueva_sesion()  # Inicia una nueva sesión
+    session.pop('conversation_history', None)  # Eliminar historial anterior
     return render_template('index.html')
 
 @app.route('/ask', methods=['POST'])
@@ -415,14 +461,24 @@ def ask():
     user_input = request.form.get('message')
     context = load_data('Data.txt')
 
-    # Si ya se ha enviado la invitación, verifica si contiene un enlace HTML
-    if conversation_history_2 and "href=" in conversation_history_2[-1]["content"]:
-        # Envía el mensaje existente interpretado como HTML
-        return jsonify({'bot_response': conversation_history_2[-1]["content"], 'html_response': True})
+    # Si el último mensaje en la sesión es una invitación con un enlace HTML, mostrarla una vez más y luego permitir continuar la conversación
+    if 'conversation_history' in session and session['conversation_history'] and "href=" in session['conversation_history'][-1]["content"]:
+        last_invitation = session['conversation_history'][-1]["content"]  # Guardar la invitación
+        session['conversation_history'].append({"role": "user", "content": user_input})  # Permitir que el usuario continúe interactuando
+        return jsonify({'bot_response': last_invitation, 'html_response': True})  # Asegurar que la invitación se muestre bien
 
-    # Si no, generar la respuesta normal del chatbot
+    # Generar la respuesta del chatbot
     response = chatbot_response(user_input, context)
-    return jsonify({'bot_response': response, 'html_response': True})
+
+    # Verificar que 'response' sea texto y manejar casos donde sea un objeto Response o dict
+    if isinstance(response, Response):  
+        response_text = response.get_data(as_text=True)  # Extraer texto si es un Response
+    elif isinstance(response, dict):  
+        response_text = response.get("bot_response", "Error: No response received.")
+    else:
+        response_text = str(response)
+
+    return jsonify({'bot_response': response_text, 'html_response': True})
 
 @app.route('/api/e5b0928f8e8028fe7581a26a905832293f7f2320afc4f6ef5690c67d9ec68a28')
 def api_reservations_2():
@@ -446,7 +502,7 @@ def api_reservations_2():
             "minimum_spend": row[8],
             "reservation_reason": row[9] if row[9] else '',
             "special_notes": row[10] if row[10] else '',
-            "status": row[11] if row[11] else 'Pendiente'  # Si no tiene estado, poner 'Pendiente'
+            "status": row[11] if row[11] else 'Pendiente'
         } for row in reservations
     ]
     
@@ -498,6 +554,13 @@ def invitacion(hash):
         
         if result:
             id, reservation_hash, nombre = result
+            
+            # Eliminar acentos y caracteres especiales del nombre
+            nombre_sin_acentos = eliminar_acentos(nombre)
+            
+            # Tomar solo los primeros dos nombres
+            nombres_lista = nombre_sin_acentos.split()
+            nombre_formateado = " ".join(nombres_lista[:2])
 
             # Crear el objeto QRCode
             qr = qrcode.QRCode(
@@ -516,7 +579,7 @@ def invitacion(hash):
             qr_base64 = base64.b64encode(buffer.getvalue()).decode('utf-8')
         else:
             reservation_hash = "Hash no encontrado"
-            nombre = "User name"
+            nombre_formateado = "User name"
             qr_base64 = None
 
         # Asegurarse de que el ID tenga siempre 4 cifras (zero-fill)
@@ -528,7 +591,7 @@ def invitacion(hash):
             id=formatted_id,  # Pasar el ID con 4 cifras para mostrar
             reservation_hash=reservation_hash,
             qr_base64=qr_base64,
-            nombre=nombre
+            nombre=nombre_formateado  # Aquí se pasa el nombre con máximo 2 palabras
         )
     
     except mysql.connector.Error as err:
@@ -539,10 +602,6 @@ def invitacion(hash):
         if 'db' in locals() and db.is_connected():
             cursor.close()
             db.close()
-
-@app.route('/')
-def menu():
-    return render_template('Menu.html')
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000, debug=True)

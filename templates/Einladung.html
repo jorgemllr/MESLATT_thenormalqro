@@ -1,28 +1,45 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Interface con Animación</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400&display=swap" rel="stylesheet">
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        html, body { height: 100%; width: 100%; overflow: hidden; margin: 0; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            margin: 0;
+        }
+
         body {
             background: linear-gradient(to right, black, black, black);
             display: flex;
             justify-content: center;
             align-items: center;
         }
+
         /* El shader ocupará todo el viewport */
         shader-art {
-            position: absolute; /* Posición absoluta para que ocupe todo el fondo */
+            position: absolute;
+            /* Posición absoluta para que ocupe todo el fondo */
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1; /* Asegura que esté detrás del contenedor */
+            z-index: -1;
+            /* Asegura que esté detrás del contenedor */
         }
+
         .container {
             background: transparent;
             width: 100vw;
@@ -35,19 +52,28 @@
             position: relative;
             padding: 10px;
         }
+
         .side-container {
-            background: inherit; /* Hace que el fondo sea igual al del body */
-            width: calc(50vw - 210px); /* 50% del viewport menos la mitad del contenedor central */
-            height: 100vh; /* Ocupa todo el alto de la ventana */
+            background: inherit;
+            /* Hace que el fondo sea igual al del body */
+            width: calc(50vw - 210px);
+            /* 50% del viewport menos la mitad del contenedor central */
+            height: 100vh;
+            /* Ocupa todo el alto de la ventana */
             position: absolute;
             top: 0;
         }
+
         .left-container {
-            left: 0; /* Pegado al lado izquierdo */
+            left: 0;
+            /* Pegado al lado izquierdo */
         }
+
         .right-container {
-            right: 0; /* Pegado al lado derecho */
+            right: 0;
+            /* Pegado al lado derecho */
         }
+
         @media only screen and (max-width: 768px) {
             .container {
                 border-radius: 0;
@@ -55,12 +81,14 @@
                 height: 100%;
             }
         }
+
         @font-face {
             font-family: 'URW DIN';
             src: url('URWDIN-Regular.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;
         }
+
         .text {
             font-family: 'URW DIN', sans-serif;
             color: white;
@@ -71,17 +99,30 @@
             position: absolute;
             bottom: 110px;
         }
-        .logo { width: 30%; height: auto; position: absolute; bottom: 10px; left: 10px; }
-        .red-number {
-        color: #c70000;
-        font-size: 30px; /* Ajusta el tamaño del número según lo que necesites */
-        font-family: 'URW DIN', sans-serif; /* Usar la misma fuente */
-        font-weight: bold;
-        -webkit-text-stroke: 0.05px black; /* Agrega un trazo negro de 1px alrededor del texto */
-        position: absolute;
-        bottom: 5px;
-        right: 100px; /* Ajusta esta distancia para alinearlo a la izquierda del QR */
+
+        .logo {
+            width: 25%;
+            height: auto;
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
         }
+
+        .red-number {
+            color: #c70000;
+            font-size: 30px;
+            /* Ajusta el tamaño del número según lo que necesites */
+            font-family: 'URW DIN', sans-serif;
+            /* Usar la misma fuente */
+            font-weight: bold;
+            -webkit-text-stroke: 0.05px black;
+            /* Agrega un trazo negro de 1px alrededor del texto */
+            position: absolute;
+            bottom: 5px;
+            right: 100px;
+            /* Ajusta esta distancia para alinearlo a la izquierda del QR */
+        }
+
         .qr {
             width: 20%;
             height: auto;
@@ -89,6 +130,7 @@
             bottom: 10px;
             right: 10px;
         }
+
         .image-left {
             position: absolute;
             left: 5px;
@@ -97,6 +139,7 @@
             width: 60px;
             height: auto;
         }
+
         .image-right {
             position: absolute;
             right: 5px;
@@ -105,7 +148,15 @@
             width: 60px;
             height: auto;
         }
-        canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
         input {
             position: absolute;
             z-index: 10;
@@ -118,16 +169,19 @@
             border: none;
             border-radius: 5px;
         }
-        .dg.ac { 
-        display: none; /* Oculta el contenedor de controles al cargar */
+
+        .dg.ac {
+            display: none;
+            /* Oculta el contenedor de controles al cargar */
         }
     </style>
 </head>
+
 <body>
     <audio autoplay loop>
         <source src="{{ url_for('static', filename='sounds/Music.mp3') }}" type="audio/mpeg">
         Tu navegador no soporta el elemento de audio.
-    </audio>    
+    </audio>
 
     <!-- Aquí se añade el fondo liquid metal -->
     <shader-art autoplay controls="false">
@@ -142,14 +196,14 @@
         <uniform type="color" name="color2" value="#1f0202" />
         <uniform type="color" name="color3" value="#1f0202" />
         <uniform type="color" name="color4" value="#252a2a" />
-        
+
         <script type="buffer" name="position" data-size="2">
             [-1, 1, -1,-1, 1,1, 1, 1, -1,-1, 1,-1]
         </script>
         <script type="buffer" name="uv" data-size="2">
             [ 0, 0,  0, 1, 1,0, 1, 0,  0, 1, 1, 1]
         </script>
-        
+
         <script type="vert">
             precision highp float;
             attribute vec4 position;
@@ -219,12 +273,14 @@
     <div class="container">
         <img src="{{ url_for('static', filename='images/ザ・ノーマル.png') }}" alt="Imagen 左" class="image-left">
         <img src="{{ url_for('static', filename='images/ザ・ノーマル.png') }}" alt="Imagen 右" class="image-right">
-        <div class="text">THE NORMAL SPECIAL EDITION / ALL RIGHTS RESERVED. THE NORMAL AND ALL RELATED TITLES, LOGOS, AND CHARACTERS ARE NOT TRADEMARKS OF THE NORMAL INTERNATIONAL INC. THIS CLUB CONTAINS SENSITIVE CONTENT WHICH SOME PEOPLE MAY FIND OFFENSIVE OR DISTURBING.</div>
+        <div class="text">THE NORMAL SPECIAL EDITION / ALL RIGHTS RESERVED. THE NORMAL AND ALL RELATED TITLES, LOGOS,
+            AND CHARACTERS ARE NOT TRADEMARKS OF THE NORMAL INTERNATIONAL INC. THIS CLUB CONTAINS SENSITIVE CONTENT
+            WHICH SOME PEOPLE MAY FIND OFFENSIVE OR DISTURBING.</div>
         <img src="{{ url_for('static', filename='images/the-normal-club.png') }}" alt="Imagen 1" class="logo">
         <div class="red-number">{{ id }}</div>
         <img src="data:image/png;base64,{{ qr_base64 }}" alt="QR Code" class="qr">
 
-    </div>  
+    </div>
 
     <script type="module">
         import { ShaderArt } from 'https://esm.sh/shader-art';
@@ -232,67 +288,67 @@
 
         ShaderArt.register([() => new UniformPlugin()]);
     </script>
-    
+
     <!-- Incluye el script de Three.js y animación -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/FontLoader.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/geometries/TextGeometry.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/STLLoader.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/FontLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/geometries/TextGeometry.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/STLLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 
-<script>
-    // Configuración de la escena para el texto
-    const sceneText = new THREE.Scene();
-    const cameraText = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const rendererText = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    rendererText.setPixelRatio(window.devicePixelRatio); // Mejora la nitidez en pantallas de alta resolución
-    rendererText.setSize(window.innerWidth, window.innerHeight);
-    document.body.appendChild(rendererText.domElement);
+    <script>
+        // Configuración de la escena para el texto
+        const sceneText = new THREE.Scene();
+        const cameraText = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const rendererText = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        rendererText.setPixelRatio(window.devicePixelRatio); // Mejora la nitidez en pantallas de alta resolución
+        rendererText.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(rendererText.domElement);
 
-    const ambientLight = new THREE.AmbientLight(0x404040);
-    sceneText.add(ambientLight);
+        const ambientLight = new THREE.AmbientLight(0x404040);
+        sceneText.add(ambientLight);
 
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-    directionalLight.position.set(5, 5, 5);
-    sceneText.add(directionalLight);
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+        directionalLight.position.set(5, 5, 5);
+        sceneText.add(directionalLight);
 
-    const loaderFont = new THREE.FontLoader();
-    let textMesh; // Variable para almacenar el mesh del texto
-    let font;
+        const loaderFont = new THREE.FontLoader();
+        let textMesh; // Variable para almacenar el mesh del texto
+        let font;
 
-    function createText(names) {
-        if (textMesh) {
-            sceneText.remove(textMesh); // Eliminar el texto anterior
-        }
+        function createText(names) {
+            if (textMesh) {
+                sceneText.remove(textMesh); // Eliminar el texto anterior
+            }
 
-        const fullText = names.join('\n'); // Combina todos los nombres en una sola cadena con saltos de línea
-        const textGeometry = new THREE.TextGeometry(fullText, {
-            font: font,
-            size: 1.3, // Tamaño del texto
-            height: 0.05,
-            curveSegments: 12,
-            bevelEnabled: true,
-            bevelThickness: 0.1,
-            bevelSize: 0.02,
-            bevelOffset: 0,
-            bevelSegments: 5
-        });
+            const fullText = names.join('\n'); // Combina todos los nombres en una sola cadena con saltos de línea
+            const textGeometry = new THREE.TextGeometry(fullText, {
+                font: font,
+                size: 1.3, // Tamaño del texto
+                height: 0.05,
+                curveSegments: 12,
+                bevelEnabled: true,
+                bevelThickness: 0.1,
+                bevelSize: 0.02,
+                bevelOffset: 0,
+                bevelSegments: 5
+            });
 
-        const textMaterial = new THREE.ShaderMaterial({
-            uniforms: {
-                topColor: { value: new THREE.Color(0xc70000) },
-                bottomColor: { value: new THREE.Color(0x460000) },
-                offset: { value: 0 },
-                repeat: { value: 1 }
-            },
-            vertexShader: `
+            const textMaterial = new THREE.ShaderMaterial({
+                uniforms: {
+                    topColor: { value: new THREE.Color(0xc70000) },
+                    bottomColor: { value: new THREE.Color(0x460000) },
+                    offset: { value: 0 },
+                    repeat: { value: 1 }
+                },
+                vertexShader: `
                 varying vec2 vUv;
                 void main() {
                     vUv = uv;
                     gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
                 }
             `,
-            fragmentShader: `
+                fragmentShader: `
                 uniform vec3 topColor;
                 uniform vec3 bottomColor;
                 varying vec2 vUv;
@@ -300,146 +356,147 @@
                     gl_FragColor = vec4(mix(topColor, bottomColor, vUv.y), 1.0);
                 }
             `,
-            side: THREE.DoubleSide,
-            transparent: true
+                side: THREE.DoubleSide,
+                transparent: true
+            });
+
+            textMesh = new THREE.Mesh(textGeometry, textMaterial);
+            sceneText.add(textMesh);
+
+            // Centrar el texto en la escena
+            textGeometry.computeBoundingBox();
+            const centerOffset = -0.5 * (textGeometry.boundingBox.max.x - textGeometry.boundingBox.min.x);
+            textMesh.position.set(centerOffset, 2.5, 0); // Ajusta la posición Y para elevar el texto
+        }
+
+        loaderFont.load("{{ url_for('static', filename='fonts/Big Samurai_Regular.json') }}", function (loadedFont) {
+            font = loadedFont;
+            // El nombre viene desde Flask y está disponible como {{ nombre }}
+            const names = "{{ nombre }}".toUpperCase().split(/[\s_]+/);
+            createText(names);
         });
 
-        textMesh = new THREE.Mesh(textGeometry, textMaterial);
-        sceneText.add(textMesh);
+        cameraText.position.z = 10;
+        cameraText.position.y = -2.7;
 
-        // Centrar el texto en la escena
-        textGeometry.computeBoundingBox();
-        const centerOffset = -0.5 * (textGeometry.boundingBox.max.x - textGeometry.boundingBox.min.x);
-        textMesh.position.set(centerOffset, 2.5, 0); // Ajusta la posición Y para elevar el texto
-    }
+        // Movimiento oscilante
+        let directionX = 1;
+        let directionY = 1;
+        const oscillationAmplitudeY = 0.15;
 
-    loaderFont.load("{{ url_for('static', filename='fonts/Big Samurai_Regular.json') }}", function (loadedFont) {
-    font = loadedFont;
-    // El nombre viene desde Flask y está disponible como {{ nombre }}
-    const names = "{{ nombre }}".toUpperCase().split(/[\s_]+/);
-    createText(names);
-});
+        // Configuración de la escena para el modelo STL
+        const sceneSTL = new THREE.Scene();
+        sceneSTL.background = null;
 
-    cameraText.position.z = 10;
-    cameraText.position.y = -2.7;
+        const cameraSTL = new THREE.PerspectiveCamera(80, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const rendererSTL = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        rendererSTL.setPixelRatio(window.devicePixelRatio); // Mejora la nitidez en pantallas de alta resolución
+        rendererSTL.setSize(window.innerWidth, window.innerHeight);
+        rendererSTL.shadowMap.enabled = true;
+        document.body.appendChild(rendererSTL.domElement);
 
-    // Movimiento oscilante
-    let directionX = 1;
-    let directionY = 1;
-    const oscillationAmplitudeY = 0.15;
+        const controlsSTL = new THREE.OrbitControls(cameraSTL, rendererSTL.domElement);
+        controlsSTL.enableDamping = true;
+        controlsSTL.dampingFactor = 0.05;
+        controlsSTL.minDistance = 1;
+        controlsSTL.maxDistance = 500;
+        controlsSTL.maxPolarAngle = Math.PI / 2;
+        controlsSTL.minPolarAngle = Math.PI / 2;
+        controlsSTL.enableRotate = true;
+        controlsSTL.enableZoom = false;
+        controlsSTL.enablePan = false;
 
-    // Configuración de la escena para el modelo STL
-    const sceneSTL = new THREE.Scene();
-    sceneSTL.background = null;
+        // Luces para la escena STL
+        const light1STL = new THREE.DirectionalLight(0xffffff, 0.6);
+        light1STL.position.set(5, 5, 5);
+        light1STL.castShadow = true;
+        sceneSTL.add(light1STL);
 
-    const cameraSTL = new THREE.PerspectiveCamera(80, window.innerWidth / window.innerHeight, 0.1, 1000); 
-    const rendererSTL = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    rendererSTL.setPixelRatio(window.devicePixelRatio); // Mejora la nitidez en pantallas de alta resolución
-    rendererSTL.setSize(window.innerWidth, window.innerHeight);
-    rendererSTL.shadowMap.enabled = true; 
-    document.body.appendChild(rendererSTL.domElement);
+        const light2STL = new THREE.DirectionalLight(0xffffff, 0.6);
+        light2STL.position.set(-5, 5, -5);
+        light2STL.castShadow = true;
+        sceneSTL.add(light2STL);
 
-    const controlsSTL = new THREE.OrbitControls(cameraSTL, rendererSTL.domElement);
-    controlsSTL.enableDamping = true;
-    controlsSTL.dampingFactor = 0.05;
-    controlsSTL.minDistance = 1;
-    controlsSTL.maxDistance = 500;
-    controlsSTL.maxPolarAngle = Math.PI / 2;
-    controlsSTL.minPolarAngle = Math.PI / 2;
-    controlsSTL.enableRotate = true;
-    controlsSTL.enableZoom = false;
-    controlsSTL.enablePan = false;
+        const light3STL = new THREE.DirectionalLight(0xffffff, 0.6);
+        light3STL.position.set(5, 5, -5);
+        light3STL.castShadow = true;
+        sceneSTL.add(light3STL);
 
-    // Luces para la escena STL
-    const light1STL = new THREE.DirectionalLight(0xffffff, 0.6);
-    light1STL.position.set(5, 5, 5);
-    light1STL.castShadow = true;
-    sceneSTL.add(light1STL);
+        const ambientLightSTL = new THREE.AmbientLight(0x404040, 0.5);
+        sceneSTL.add(ambientLightSTL);
 
-    const light2STL = new THREE.DirectionalLight(0xffffff, 0.6);
-    light2STL.position.set(-5, 5, -5);
-    light2STL.castShadow = true;
-    sceneSTL.add(light2STL);
+        const planeGeometrySTL = new THREE.PlaneGeometry(500, 500);
+        const planeMaterialSTL = new THREE.ShadowMaterial({ opacity: 0.5 });
+        const planeSTL = new THREE.Mesh(planeGeometrySTL, planeMaterialSTL);
+        planeSTL.rotation.x = -Math.PI / 2;
+        planeSTL.position.y = -1;
+        planeSTL.receiveShadow = true;
+        sceneSTL.add(planeSTL);
 
-    const light3STL = new THREE.DirectionalLight(0xffffff, 0.6);
-    light3STL.position.set(5, 5, -5);
-    light3STL.castShadow = true;
-    sceneSTL.add(light3STL);
+        // Agrega una luz direccional azul intensa desde abajo para el modelo STL
+        const whiteLight = new THREE.DirectionalLight(0xffffff, 1.5); // Color azul con una intensidad fuerte
+        whiteLight.position.set(0, -45, 0); // Posiciona la luz debajo del modelo
+        whiteLight.target.position.set(0, 1, 0); // Enfoca la luz hacia el modelo
+        sceneSTL.add(whiteLight);
+        sceneSTL.add(whiteLight.target);
 
-    const ambientLightSTL = new THREE.AmbientLight(0x404040, 0.5);
-    sceneSTL.add(ambientLightSTL);
+        const loaderSTL = new THREE.STLLoader();
+        let meshSTL;
 
-    const planeGeometrySTL = new THREE.PlaneGeometry(500, 500);
-    const planeMaterialSTL = new THREE.ShadowMaterial({ opacity: 0.5 });
-    const planeSTL = new THREE.Mesh(planeGeometrySTL, planeMaterialSTL);
-    planeSTL.rotation.x = -Math.PI / 2;
-    planeSTL.position.y = -1;
-    planeSTL.receiveShadow = true;
-    sceneSTL.add(planeSTL);
+        loaderSTL.load("{{ url_for('static', filename='models/Model.stl') }}", function (geometrySTL) {
+            geometrySTL.center();
+            const materialSTL = new THREE.MeshPhongMaterial({ color: 0xc70000, specular: 0x111111, shininess: 100 });
+            meshSTL = new THREE.Mesh(geometrySTL, materialSTL);
+            meshSTL.castShadow = true;
+            meshSTL.receiveShadow = true;
+            sceneSTL.add(meshSTL);
 
-    // Agrega una luz direccional azul intensa desde abajo para el modelo STL
-    const whiteLight = new THREE.DirectionalLight(0xffffff, 1.5); // Color azul con una intensidad fuerte
-    whiteLight.position.set(0, -45, 0); // Posiciona la luz debajo del modelo
-    whiteLight.target.position.set(0, 1, 0); // Enfoca la luz hacia el modelo
-    sceneSTL.add(whiteLight);
-    sceneSTL.add(whiteLight.target);
+            meshSTL.scale.set(0.13, 0.13, 0.13);
+            meshSTL.rotation.set(-Math.PI / 2, 0, 0);
+            meshSTL.position.set(0, -0.5, 0);
 
-    const loaderSTL = new THREE.STLLoader();
-    let meshSTL;
+            const boxSTL = new THREE.Box3().setFromObject(meshSTL);
+            const centerSTL = boxSTL.getCenter(new THREE.Vector3());
+            const sizeSTL = boxSTL.getSize(new THREE.Vector3());
+            cameraSTL.position.set(centerSTL.x, centerSTL.y + 1, sizeSTL.z * 2.6);
+            cameraSTL.lookAt(centerSTL);
 
-    loaderSTL.load("{{ url_for('static', filename='models/Model.stl') }}", function (geometrySTL) {
-        geometrySTL.center(); 
-        const materialSTL = new THREE.MeshPhongMaterial({ color: 0xc70000, specular: 0x111111, shininess: 100 });
-        meshSTL = new THREE.Mesh(geometrySTL, materialSTL);
-        meshSTL.castShadow = true;
-        meshSTL.receiveShadow = true;
-        sceneSTL.add(meshSTL);
+            controlsSTL.target.set(centerSTL.x, centerSTL.y, centerSTL.z);
+        });
 
-        meshSTL.scale.set(1.5, 1.5, 1.5);
-        meshSTL.rotation.set(-Math.PI / 2, 0, 0);
-        meshSTL.position.set(0, -0.5, 0);
-
-        const boxSTL = new THREE.Box3().setFromObject(meshSTL);
-        const centerSTL = boxSTL.getCenter(new THREE.Vector3());
-        const sizeSTL = boxSTL.getSize(new THREE.Vector3());
-        cameraSTL.position.set(centerSTL.x, centerSTL.y + 1, sizeSTL.z * 2.6);
-        cameraSTL.lookAt(centerSTL);
-
-        controlsSTL.target.set(centerSTL.x, centerSTL.y, centerSTL.z);
-    });
-
-    function animate() {
-        requestAnimationFrame(animate);
-        if (textMesh) {
-            textMesh.position.y += 0.002 * directionY;
-            if (textMesh.position.y > 2.5 + oscillationAmplitudeY || textMesh.position.y < 2.5 - oscillationAmplitudeY) {
-                directionY *= -1; 
+        function animate() {
+            requestAnimationFrame(animate);
+            if (textMesh) {
+                textMesh.position.y += 0.002 * directionY;
+                if (textMesh.position.y > 2.5 + oscillationAmplitudeY || textMesh.position.y < 2.5 - oscillationAmplitudeY) {
+                    directionY *= -1;
+                }
             }
+
+            if (meshSTL) {
+                meshSTL.rotation.z += 0.003;
+            }
+
+            controlsSTL.update();
+            rendererSTL.render(sceneSTL, cameraSTL);
+            rendererText.render(sceneText, cameraText);
         }
 
-        if (meshSTL) {
-            meshSTL.rotation.z += 0.003; 
-        }
+        animate();
 
-        controlsSTL.update();
-        rendererSTL.render(sceneSTL, cameraSTL);
-        rendererText.render(sceneText, cameraText);
-    }
+        window.addEventListener('resize', function () {
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            rendererText.setSize(width, height);
+            cameraText.aspect = width / height;
+            cameraText.updateProjectionMatrix();
 
-    animate();
-
-    window.addEventListener('resize', function () {
-        const width = window.innerWidth;
-        const height = window.innerHeight;
-        rendererText.setSize(width, height);
-        cameraText.aspect = width / height;
-        cameraText.updateProjectionMatrix();
-        
-        rendererSTL.setSize(width, height);
-        cameraSTL.aspect = width / height;
-        cameraSTL.updateProjectionMatrix();
-    });
-</script>
+            rendererSTL.setSize(width, height);
+            cameraSTL.aspect = width / height;
+            cameraSTL.updateProjectionMatrix();
+        });
+    </script>
 
 </body>
+
 </html>

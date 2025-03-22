@@ -1,12 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chatbot</title>
     <link rel="stylesheet" href="/static/chatbot-styles.css"> <!-- Link al archivo CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script>
+    <style>
+        .chat-response {
+            max-width: 100%;
+            display: block;
+            overflow-wrap: break-word;
+            white-space: pre-wrap;
+            text-align: left;
+        }
+
+        .chat-response img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .chat-response .math {
+            display: block;
+            text-align: center;
+        }
+    </style>
 </head>
+
 <body>
 
     <!-- Contenedor lateral izquierdo -->
@@ -28,14 +53,14 @@
         <uniform type="color" name="color2" value="#1f0202" />
         <uniform type="color" name="color3" value="#ff0000" />
         <uniform type="color" name="color4" value="#252a2a" />
-        
+
         <script type="buffer" name="position" data-size="2">
             [-1, 1, -1,-1, 1,1, 1, 1, -1,-1, 1,-1]
         </script>
         <script type="buffer" name="uv" data-size="2">
             [ 0, 0,  0, 1, 1,0, 1, 0,  0, 1, 1, 1]
         </script>
-        
+
         <script type="vert">
             precision highp float;
             attribute vec4 position;
@@ -102,103 +127,400 @@
 
     <div class="chat-container">
         <div class="logo-container">
-            <img src="/static/the-normal-club.png" alt="The Normal Club Logo">
+            <img src="/static/images/the-normal-club2.png" alt="The Normal Club Logo">
         </div>
         <div id="chat-box" class="chat-box"></div>
         <div class="chat-input">
-            <input type="text" id="message" placeholder="The Normal Qro">
+            <input type="text" id="message" placeholder="Type a message">
             <button onclick="sendMessage()">
-                <i class="fas fa-paper-plane"></i> <!-- Ícono de enviar de Font Awesome -->
-            </button>            
+                <i class="fas fa-paper-plane"></i>
+            </button>
         </div>
-    </div>
+        <div class="chat-footer">
+            <p>Chatbot developed by <a href="https://www.meslatt.com" target="_blank">MESLATT</a>.</p>
+        </div>
 
-    <script>
-        function sendMessage() {
-            const messageInput = document.getElementById("message");
-            const message = messageInput.value;
-            if (!message) return;
-
-            const chatBox = document.getElementById("chat-box");
-
-            const userMessageDiv = document.createElement("div");
-            userMessageDiv.classList.add("message", "user-message");
-            userMessageDiv.textContent = message;
-            chatBox.appendChild(userMessageDiv);
-
-            fetch("/ask", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded"
-                },
-                body: `message=${encodeURIComponent(message)}`
-            })
-            .then(response => response.json())
-            .then(data => {
-                const botMessageDiv = document.createElement("div");
-                botMessageDiv.classList.add("message", "bot-message");
-
-                // Manejo de respuesta HTML
-                if (data.html_response) {
-                    botMessageDiv.innerHTML = data.bot_response;
-                } else {
-                    botMessageDiv.textContent = data.bot_response;
-                }
-
-                chatBox.appendChild(botMessageDiv);
-                chatBox.scrollTop = chatBox.scrollHeight;
-            });
-
-            messageInput.value = "";
-        }
-
-        // Detect Enter key to send message
-        document.getElementById("message").addEventListener("keypress", function(event) {
-            if (event.key === "Enter") { // Check if Enter key is pressed
-                event.preventDefault();
-                sendMessage();
-            }
-        });
-    </script>
-
-    <script type="module">
-        import { ShaderArt } from 'https://esm.sh/shader-art';
-        import { UniformPlugin } from 'https://esm.sh/@shader-art/plugin-uniform';
-
-        ShaderArt.register([() => new UniformPlugin()]);
-    </script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const chatBox = document.querySelector('.chat-box');
-
-        // Mensaje de bienvenida personalizado
-        const welcomeMessage = document.createElement('div');
-        welcomeMessage.classList.add('message', 'bot-message', 'welcome-message');
-        welcomeMessage.textContent = "¡Hola! Bienvenido a The Normal. Este chatbot está diseñado para responder tus preguntas y ayudarte con tus reservaciones. ¿En qué podemos asistirte hoy?";
-        chatBox.appendChild(welcomeMessage);
-
-        // Mensaje con la imagen y el enlace
-        const imageMessage = document.createElement('div');
-        imageMessage.classList.add('message', 'bot-message');
-        imageMessage.innerHTML = `
-            <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-                <p style="margin: 0; font-size: 14px; color: #fff; text-align: center;">
-                    Nuestra ubicación:
-                </p>
-                <a href="https://maps.app.goo.gl/Y6sfFj9i2CrUeoMx6" target="_blank" style="text-decoration: none;">
-                    <img src="/static/images/2023-01-07.jpg" alt="Ubicación de TheNormal" 
-                         style="width: 200px; margin-top: 10px; border-radius: 5px;">
-                </a>
-                <a href="https://maps.app.goo.gl/Y6sfFj9i2CrUeoMx6" target="_blank" 
-                   style="margin-top: 5px; font-size: 14px; color: #C70000; text-decoration: underline;">
-                    Ver en Google Maps
-                </a>
+        <!-- Recuadro Disclaimer -->
+        <div id="disclaimer-box" class="disclaimer-box">
+            <div class="disclaimer-header">
+                <img src="/static/images/Business_logo.jpg" alt="Business Logo" class="business-logo">
+                <span class="business-name">Hi MIT!</span>
             </div>
-        `;
-        chatBox.appendChild(imageMessage);
-    });
-</script>
+            <div class="divider"></div>
+            <div>
+                <p class="disclaimer-text">
+                    This chatbot was originally designed for one of my clients, but since it is no longer in use, I
+                    decided to modify it for you. This chatbot is just a demonstration; if you ask, it will give you an
+                    idea of how it works.
 
+                    You can ask specific questions about the code, my application to MIT, or anything else you are
+                    curious about. Feel free to explore and ask anything!
+                </p>
+                <div class="divider"></div>
+                <div class="terms-container">
+                    <input type="checkbox" id="accept-terms">
+                    <label for="accept-terms">
+                        I have read and accept the <a href="#" onclick="showTerms(event)">Terms and Conditions</a>
+                    </label>
+                </div>
+                <button class="accept-button" onclick="acceptDisclaimer()">Accept</button>
+            </div>
+        </div>
+
+        <!-- Nuevo Recuadro de Términos y Condiciones -->
+        <div id="terms-box" class="terms-box hidden">
+            <div class="disclaimer-header">
+                <img src="/static/images/Business_logo.jpg" alt="Business Logo" class="business-logo">
+                <span class="terms-and-conditions">Terms and Conditions</span>
+            </div>
+            <div class="divider"></div>
+
+            <!-- Contenedor con scroll -->
+            <div class="terms-content">
+                <p class="terms-text">
+                    <strong>Purpose and Scope</strong><br>
+                    This chatbot is designed as a demonstration for my MIT portfolio. It provides general information
+                    about my projects, my MIT application, and the chatbot’s functionality. It is not intended for
+                    official or academic guidance.
+                </p>
+
+                <p class="terms-text">
+                    <strong>Accuracy and Limitations</strong><br>
+                    While the chatbot aims to provide helpful responses, it may have limitations and could generate
+                    incorrect or incomplete information. It does not represent official MIT statements. If you encounter
+                    an error, feel free to ask again or reload the page.
+                </p>
+
+                <p class="terms-text">
+                    <strong>Data Collection and Usage</strong><br>
+                    The chatbot may collect user interactions for analytical purposes to improve its responses. No
+                    personal information is shared with third parties or used beyond this demonstration.
+                </p>
+
+                <p class="terms-text">
+                    <strong>User Responsibility</strong><br>
+                    Users are responsible for evaluating the information provided by the chatbot. It should not be used
+                    for making academic, financial, legal, or other critical decisions.
+                </p>
+
+                <p class="terms-text">
+                    <strong>Privacy and Security</strong><br>
+                    While reasonable measures are taken to protect user interactions, absolute security cannot be
+                    guaranteed. Users should avoid sharing sensitive or personal information.
+                </p>
+
+                <p class="terms-text">
+                    <strong>Modifications and Updates</strong><br>
+                    These terms may be updated as needed. Continued use of the chatbot implies acceptance of any
+                    modifications.
+                </p>
+
+                <p class="terms-text">
+                    <strong>Limitation of Liability</strong><br>
+                    The chatbot creator is not liable for any direct or indirect consequences resulting from the use or
+                    misuse of this chatbot.
+                </p>
+
+                <p class="terms-text">
+                    <strong>Third-Party Links</strong><br>
+                    The chatbot may provide links to external sources for additional context. The creator is not
+                    responsible for the content or policies of these third-party websites.
+                </p>
+
+                <p class="terms-text">
+                    By using this chatbot, you acknowledge and accept these terms. If you do not agree, please
+                    discontinue use immediately.
+                </p>
+            </div>
+
+            <div class="divider"></div>
+            <button class="back-button" onclick="showDisclaimer()">Back</button>
+        </div>
+
+        <script>
+            function sendMessage() {
+                const messageInput = document.getElementById("message");
+                const message = messageInput.value;
+                if (!message) return;
+
+                const chatBox = document.getElementById("chat-box");
+
+                const userMessageDiv = document.createElement("div");
+                userMessageDiv.classList.add("message", "user-message");
+                userMessageDiv.textContent = message;
+                chatBox.appendChild(userMessageDiv);
+
+                fetch("/ask", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    body: `message=${encodeURIComponent(message)}`
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        const botMessageDiv = document.createElement("div");
+                        botMessageDiv.classList.add("message", "bot-message-container");
+
+                        // Crea la burbuja de imagen
+                        const botImage = document.createElement("img");
+                        botImage.src = "/static/images/Business_logo.jpg"; // Ruta de la imagen del negocio
+                        botImage.alt = "Bot Logo";
+                        botImage.classList.add("bot-image");
+
+                        // Crea el contenedor del mensaje
+                        const botTextDiv = document.createElement("div");
+                        botTextDiv.classList.add("bot-message");
+
+                        if (data.bot_response && data.bot_response.trim() !== "") {
+                            botTextDiv.innerHTML = data.bot_response;
+                        } else {
+                            botTextDiv.innerHTML = "<i>Error: No response received.</i>";
+                        }
+
+                        // Estructura del mensaje con imagen
+                        botMessageDiv.appendChild(botImage);
+                        botMessageDiv.appendChild(botTextDiv);
+
+                        chatBox.appendChild(botMessageDiv);
+                        chatBox.scrollTop = chatBox.scrollHeight;
+
+                        renderMath(); // Asegurar que MathJax procese LaTeX
+                    });
+
+                messageInput.value = "";
+            }
+
+            // Detect Enter key to send message
+            document.getElementById("message").addEventListener("keypress", function (event) {
+                if (event.key === "Enter") { // Check if Enter key is pressed
+                    event.preventDefault();
+                    sendMessage();
+                }
+            });
+        </script>
+
+        <script type="text/javascript">
+            MathJax.Hub.Config({
+                tex2jax: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']],
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                    processEscapes: true,
+                    processEnvironments: true,
+                    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                },
+                CommonHTML: {
+                    scale: 90,  // Ajusta el tamaño de las ecuaciones (90% del tamaño original)
+                    linebreaks: { automatic: true }  // Habilita los saltos de línea automáticos
+                },
+                "HTML-CSS": {
+                    scale: 90,  // Ajusta el tamaño de las ecuaciones (90% del tamaño original)
+                    linebreaks: { automatic: true }  // Habilita los saltos de línea automáticos
+                },
+                SVG: {
+                    scale: 90,  // Ajusta el tamaño de las ecuaciones (90% del tamaño original)
+                    linebreaks: { automatic: true }  // Habilita los saltos de línea automáticos
+                }
+            });
+        </script>
+
+        <script>
+            function addChatbotResponse(responseText) {
+                let chatContainer = document.getElementById("chat-container");
+                let responseElement = document.createElement("div");
+                responseElement.className = "chat-response";
+
+                // Convertir ecuaciones en LaTeX
+                responseText = responseText.replace(/\$/g, "\\(").replace(/\\\$/g, "\\)");
+                responseText = responseText.replace(/\[([^\]]+)\]/g, "\\[ $1 \\]");
+
+                responseElement.innerHTML = responseText;
+                chatContainer.appendChild(responseElement);
+
+                // Esperar a que se inserte el contenido y luego procesarlo con MathJax
+                if (window.MathJax) {
+                    MathJax.typesetPromise([responseElement]);
+                }
+            }
+        </script>
+
+        <script>
+            function renderMath() {
+                if (window.MathJax) {
+                    MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+                }
+            }
+        </script>
+
+        <script type="module">
+            import { ShaderArt } from 'https://esm.sh/shader-art';
+            import { UniformPlugin } from 'https://esm.sh/@shader-art/plugin-uniform';
+
+            ShaderArt.register([() => new UniformPlugin()]);
+        </script>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const chatBox = document.querySelector('.chat-box');
+
+                // Mensaje de bienvenida personalizado
+                const welcomeMessageContainer = document.createElement('div');
+                welcomeMessageContainer.classList.add('message', 'bot-message-container');
+
+                // Crea la burbuja de imagen
+                const botImageWelcome = document.createElement('img');
+                botImageWelcome.src = "/static/images/Business_logo.jpg"; // Ruta de la imagen del negocio
+                botImageWelcome.alt = "Bot Logo";
+                botImageWelcome.classList.add("bot-image");
+
+                // Crea el contenedor del mensaje de bienvenida
+                const welcomeMessageDiv = document.createElement('div');
+                welcomeMessageDiv.classList.add('bot-message', 'welcome-message');
+                welcomeMessageDiv.innerHTML = `
+    Hello MIT! This chatbot is here to guide you through my portfolio. Ask me anything!<br><br>
+It was originally used to handle reservations at a venue I used to manage. 
+Guests would interact with the bot to request a reservation, and after completing the required details, 
+they would receive a personalized digital invitation.<br><br>
+The reservation feature still works, but just like back then, you'd need to provide all the required details 
+the venue used to ask for. To save you some time, I've included the final result below so you can see it in action right away.
+`;
+
+                // Estructura del mensaje de bienvenida con imagen
+                welcomeMessageContainer.appendChild(botImageWelcome);
+                welcomeMessageContainer.appendChild(welcomeMessageDiv);
+                chatBox.appendChild(welcomeMessageContainer);
+
+                // Segundo mensaje: estilo de reservación, con enlace fijo
+                const reservacionMessageContainer = document.createElement('div');
+                reservacionMessageContainer.classList.add('message', 'bot-message-container');
+
+                // Imagen estilo bot
+                const botImageReserva = document.createElement('img');
+                botImageReserva.src = "/static/images/Business_logo.jpg";
+                botImageReserva.alt = "Bot Logo";
+                botImageReserva.classList.add("bot-image");
+
+                // Contenedor del mensaje con el link de reservación (estático)
+                const reservacionMessageDiv = document.createElement('div');
+                reservacionMessageDiv.classList.add('bot-message');
+                reservacionMessageDiv.innerHTML = `
+    <div style="display: flex; flex-direction: column; align-items: center; text-align: center; 
+    border: 5px solid #c70000; padding: 10px; border-radius: 5px; max-width: 300px; margin: auto;">
+    <a href="https://thenormalqro.meslatt.com/tarjeta/3141592653589793238462643383279502884197169399375105820974944592" target="_blank" style="text-decoration: none;">
+        <img src="/static/images/MIT.jpg" alt="Invitation Preview" style="width: 200px; margin-bottom: 10px;">
+    </a>
+    <p style="margin: 0; font-size: 14px; color: #fff;">
+        Click <a href="https://thenormalqro.meslatt.com/tarjeta/3141592653589793238462643383279502884197169399375105820974944592" target="_blank" style="color:#c70000; font-weight:bold; text-decoration:underline;">
+            here
+        </a> to view an example of the personalized invitation you would receive.
+    </p>
+</div>
+`;
+
+                // Insertar en el chat
+                reservacionMessageContainer.appendChild(botImageReserva);
+                reservacionMessageContainer.appendChild(reservacionMessageDiv);
+                chatBox.appendChild(reservacionMessageContainer);
+
+                // Mensaje con la imagen y el enlace
+                const imageMessageContainer = document.createElement('div');
+                imageMessageContainer.classList.add('message', 'bot-message-container');
+
+                // Crea la burbuja de imagen
+                const botImageLocation = document.createElement('img');
+                botImageLocation.src = "/static/images/Business_logo.jpg"; // Ruta de la imagen del negocio
+                botImageLocation.alt = "Bot Logo";
+                botImageLocation.classList.add("bot-image");
+
+                // Crea el contenedor del mensaje con la ubicación
+                const imageMessageDiv = document.createElement('div');
+                imageMessageDiv.classList.add('bot-message');
+                imageMessageDiv.innerHTML = `
+    <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+        <p style="margin: 0; font-size: 14px; color: #fff; text-align: center;">
+            Want to see more of my projects?
+        </p>
+        <a href="https://leeddynamics.meslatt.com/" target="_blank" style="text-decoration: none;">
+            <img src="/static/images/2023-01-07.jpg" alt="Ubicación de TheNormal" 
+                 style="width: 200px; margin-top: 10px; border-radius: 5px;">
+        </a>
+        <p style="margin-top: 5px; font-size: 14px; color: #fff;">
+            Check out <a href="https://leeddynamics.meslatt.com/" target="_blank" 
+            style="color: #22b6b4; text-decoration: underline;">LEED Dynamics</a> and more!
+        </p>
+    </div>
+`;
+
+                // Estructura del mensaje con la ubicación y la imagen
+                imageMessageContainer.appendChild(botImageLocation);
+                imageMessageContainer.appendChild(imageMessageDiv);
+                chatBox.appendChild(imageMessageContainer);
+            });
+        </script>
+
+        <script>
+            function showTerms() {
+                const termsContent = `
+        <div class="terms-popup">
+            <h3>Terms and Conditions</h3>
+            <p>
+                By using this chatbot, you agree to the following terms and conditions:
+                <ul>
+                    <li>The chatbot may have limitations and could generate errors.</li>
+                    <li>Information collected is used for statistical purposes only.</li>
+                    <li>You must reload the page if errors occur.</li>
+                </ul>
+            </p>
+            <button class="close-button" onclick="closeTerms()">Close</button>
+        </div>
+    `;
+                const disclaimerBox = document.querySelector('.disclaimer-box');
+                disclaimerBox.insertAdjacentHTML('beforeend', termsContent);
+            }
+
+            function closeTerms() {
+                const termsPopup = document.querySelector('.terms-popup');
+                if (termsPopup) {
+                    termsPopup.remove();
+                }
+            }
+
+            function closeDisclaimer() {
+                const disclaimerBox = document.querySelector('.disclaimer-box');
+                disclaimerBox.style.display = 'none';
+            }
+
+            // Habilitar el botón "Aceptar" cuando se marca la palomita
+            document.addEventListener('DOMContentLoaded', () => {
+                const acceptButton = document.querySelector('.accept-button');
+                const termsCheckbox = document.querySelector('.terms-checkbox');
+
+                termsCheckbox.addEventListener('change', () => {
+                    acceptButton.disabled = !termsCheckbox.checked;
+                });
+            });
+        </script>
+
+        <script>
+            function showTerms(event) {
+                event.preventDefault();
+                document.getElementById("disclaimer-box").classList.add("hidden");
+                document.getElementById("terms-box").classList.remove("hidden");
+            }
+
+            function showDisclaimer() {
+                document.getElementById("terms-box").classList.add("hidden");
+                document.getElementById("disclaimer-box").classList.remove("hidden");
+            }
+
+            function acceptDisclaimer() {
+                if (document.getElementById("accept-terms").checked) {
+                    document.getElementById("disclaimer-box").style.display = "none";
+                } else {
+                    alert("You must accept the terms and conditions.");
+                }
+            }
+        </script>
 </body>
+
 </html>
