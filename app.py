@@ -1,6 +1,5 @@
 import hashlib
 import os
-from dotenv import load_dotenv
 import openai
 import qrcode
 import io
@@ -18,8 +17,7 @@ import logging
 from logging.handlers import RotatingFileHandler
 from apscheduler.schedulers.background import BackgroundScheduler
 import unicodedata
-
-load_dotenv()
+from flask_session import Session
 
 def eliminar_acentos(texto):
     """
@@ -31,41 +29,36 @@ def eliminar_acentos(texto):
     texto = re.sub(r'[^a-zA-Z0-9 ]', '', texto)
     return texto
 
+# Inicializar la app de Flask
 app = Flask(__name__)
 
-from flask_session import Session
-
-app.config['SESSION_TYPE'] = 'filesystem'  # Guardar sesiones en archivos (puedes cambiarlo a 'sqlalchemy' para usar una DB)
+# Configuración de sesiones
+app.config['SESSION_TYPE'] = 'filesystem'  
 app.config['SESSION_PERMANENT'] = False
-app.config['SESSION_FILE_DIR'] = './flask_session'  # Directorio donde se guardan las sesiones
-
-# Configuración para permitir sesiones dentro de iframes
+app.config['SESSION_FILE_DIR'] = './flask_session'
 app.config['SESSION_COOKIE_SAMESITE'] = 'None'
 app.config['SESSION_COOKIE_SECURE'] = True
 
 Session(app)
 
-# Clave de API de OpenAI
-openai.api_key = os.getenv("OPENAI_API_KEY")
+# Clave de API de OpenAI desde variable de entorno
+openai.api_key = os.environ.get("OPENAI_API_KEY")
 
 # Configurar credenciales de la base de datos desde variables de entorno
-DB_HOST = os.getenv("DB_HOST")
-DB_USER = os.getenv("DB_USER")
-DB_PASSWORD = os.getenv("DB_PASSWORD")
-DB_NAME = os.getenv("DB_NAME")
-DB_PORT = os.getenv("DB_PORT")
+DB_CONFIG = {
+    "host": os.environ.get("DB_HOST"),
+    "user": os.environ.get("DB_USER"),
+    "password": os.environ.get("DB_PASSWORD"),
+    "database": os.environ.get("DB_NAME"),
+    "port": int(os.environ.get("DB_PORT", 3306))  # Valor por defecto si no se define
+}
 
-app.secret_key = secrets.token_hex(16)  # Clave segura para sesiones
+# Clave segura para las sesiones
+app.secret_key = secrets.token_hex(16)
 
-# Conexión a la base de datos unificada
+# Conexión a la base de datos
 def conectar_db():
-    return mysql.connector.connect(
-        host=DB_HOST,
-        user=DB_USER,
-        password=DB_PASSWORD,
-        database=DB_NAME,
-        port=int(DB_PORT)  # Asegurar que el puerto es un número
-    )
+    return mysql.connector.connect(**DB_CONFIG)
 
 # Función para generar el hash único
 def generar_hash(nombre, id):
