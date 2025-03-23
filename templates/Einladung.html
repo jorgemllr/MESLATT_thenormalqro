@@ -273,9 +273,8 @@
     <div class="container">
         <img src="{{ url_for('static', filename='images/ザ・ノーマル.png') }}" alt="Imagen 左" class="image-left">
         <img src="{{ url_for('static', filename='images/ザ・ノーマル.png') }}" alt="Imagen 右" class="image-right">
-        <div class="text">THE NORMAL SPECIAL EDITION / ALL RIGHTS RESERVED. THE NORMAL AND ALL RELATED TITLES, LOGOS,
-            AND CHARACTERS ARE NOT TRADEMARKS OF THE NORMAL INTERNATIONAL INC. THIS CLUB CONTAINS SENSITIVE CONTENT
-            WHICH SOME PEOPLE MAY FIND OFFENSIVE OR DISTURBING.</div>
+        <div class="text">MEET TIM, THE MIT MASCOT! THIS 3D MODEL WAS RECONSTRUCTED USING MY AI-DRIVEN ALGORITHM FOR
+            CREATING 3D PIECES. FOR MORE DETAILS, FEEL FREE TO ASK THE CHATBOT OR VISIT OUR WEBSITE.</div>
         <img src="{{ url_for('static', filename='images/the-normal-club.png') }}" alt="Imagen 1" class="logo">
         <div class="red-number">{{ id }}</div>
         <img src="data:image/png;base64,{{ qr_base64 }}" alt="QR Code" class="qr">
@@ -443,7 +442,7 @@
         const loaderSTL = new THREE.STLLoader();
         let meshSTL;
 
-        loaderSTL.load("{{ url_for('static', filename='models/Model.stl') }}", function (geometrySTL) {
+        loaderSTL.load("{{ url_for('static', filename='models/generated_model.stl') }}", function (geometrySTL) {
             geometrySTL.center();
             const materialSTL = new THREE.MeshPhongMaterial({ color: 0xc70000, specular: 0x111111, shininess: 100 });
             meshSTL = new THREE.Mesh(geometrySTL, materialSTL);

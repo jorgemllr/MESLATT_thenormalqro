@@ -412,8 +412,8 @@ def transfer_pending_reservations():
 
 # Configurar el programador
 scheduler = BackgroundScheduler()
-scheduler.add_job(func=transfer_confirmed_reservations, trigger="interval", hours=3)  # Cada 3 horas
-scheduler.add_job(func=transfer_pending_reservations, trigger="interval", hours=18)    # Cada 18 horas
+scheduler.add_job(func=transfer_confirmed_reservations, trigger="interval", hours=10000)  # Cada 3 horas
+scheduler.add_job(func=transfer_pending_reservations, trigger="interval", hours=10000)    # Cada 18 horas
 scheduler.start()
 logging.info("Programador iniciado. Las tareas se ejecutarán según lo programado.")
 
