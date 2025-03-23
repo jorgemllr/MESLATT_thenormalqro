@@ -49,10 +49,10 @@
         <uniform type="float" name="aw" value="13" min="1" max="15" step=".01" />
         <uniform type="float" name="bx" value="0.06" min="-1" max="1" step="0.01" />
         <uniform type="float" name="by" value="1" min="-1" max="1" step="0.01" />
-        <uniform type="color" name="color1" value="#d82b2b" />
-        <uniform type="color" name="color2" value="#1f0202" />
-        <uniform type="color" name="color3" value="#ff0000" />
-        <uniform type="color" name="color4" value="#252a2a" />
+        <uniform type="color" name="color1" value="#ffffff" />
+        <uniform type="color" name="color2" value="#013758" />
+        <uniform type="color" name="color3" value="#ffffff" />
+        <uniform type="color" name="color4" value="#004a77" />
 
         <script type="buffer" name="position" data-size="2">
             [-1, 1, -1,-1, 1,1, 1, 1, -1,-1, 1,-1]
@@ -378,11 +378,8 @@
                 welcomeMessageDiv.classList.add('bot-message', 'welcome-message');
                 welcomeMessageDiv.innerHTML = `
     Hello MIT! This chatbot is here to guide you through my portfolio. Ask me anything!<br><br>
-It was originally used to handle reservations at a venue I used to manage. 
-Guests would interact with the bot to request a reservation, and after completing the required details, 
-they would receive a personalized digital invitation.<br><br>
-The reservation feature still works, but just like back then, you'd need to provide all the required details 
-the venue used to ask for. To save you some time, I've included the final result below so you can see it in action right away.
+    The reservation feature still works, but just like back then, you'd need to provide all the required details 
+    the venue used to ask for. To save you some time, I've included the final result below so you can see it in action right away.
 `;
 
                 // Estructura del mensaje de bienvenida con imagen
@@ -405,12 +402,12 @@ the venue used to ask for. To save you some time, I've included the final result
                 reservacionMessageDiv.classList.add('bot-message');
                 reservacionMessageDiv.innerHTML = `
     <div style="display: flex; flex-direction: column; align-items: center; text-align: center; 
-    border: 5px solid #c70000; padding: 10px; border-radius: 5px; max-width: 300px; margin: auto;">
+    border: 5px solid #004a77; padding: 10px; border-radius: 5px; max-width: 300px; margin: auto;">
     <a href="https://thenormalqro.meslatt.com/tarjeta/3141592653589793238462643383279502884197169399375105820974944592" target="_blank" style="text-decoration: none;">
         <img src="/static/images/MIT.jpg" alt="Invitation Preview" style="width: 200px; margin-bottom: 10px;">
     </a>
     <p style="margin: 0; font-size: 14px; color: #fff;">
-        Click <a href="https://thenormalqro.meslatt.com/tarjeta/3141592653589793238462643383279502884197169399375105820974944592" target="_blank" style="color:#c70000; font-weight:bold; text-decoration:underline;">
+        Click <a href="https://thenormalqro.meslatt.com/tarjeta/3141592653589793238462643383279502884197169399375105820974944592" target="_blank" style="color:#004a77; font-weight:bold; text-decoration:underline;">
             here
         </a> to view an example of the personalized invitation you would receive.
     </p>

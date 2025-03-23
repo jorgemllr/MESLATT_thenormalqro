@@ -66,7 +66,7 @@ shader-art {
 
 .logo-container {
     height: 120px;
-    background: linear-gradient(to right, black, #c70000);
+    background: linear-gradient(to right, black, #004a77);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -93,7 +93,7 @@ shader-art {
     display: flex;
     padding: 10px;
     border-top: 1px solid #000000;
-    background: linear-gradient(to right, black, #c70000);
+    background: linear-gradient(to right, black, #004a77);
     /* Asegura que el input esté pegado al footer */
     margin-top: auto;
     /* Empuja el input hacia abajo */
@@ -140,7 +140,7 @@ shader-art {
 }
 
 .user-message {
-    background: #c70000;
+    background: #004a77;
     align-self: flex-end;
     color: white;
     border-radius: 15px 15px 0px 15px;
@@ -164,11 +164,9 @@ shader-art {
     border-radius: 50%;
     object-fit: cover;
     margin-right: 10px;
-    border: 2px solid #c70000;
+    border: 2px solid #004a77;
     align-self: flex-start;
-    /* Fuerza la alineación superior de la imagen */
     margin-top: 0;
-    /* Elimina cualquier margen superior */
 }
 
 .bot-message {
@@ -178,14 +176,11 @@ shader-art {
     border-radius: 15px 15px 15px 0px;
     max-width: calc(100% - 50px);
     margin-top: 0;
-    /* Asegura que no haya margen superior */
 }
 
 .bot-message .MathJax {
     font-size: 90%;
-    /* Ajusta el tamaño de las ecuaciones */
     line-height: 1.5;
-    /* Ajusta el espaciado entre líneas */
 }
 
 .dg.ac {
@@ -196,9 +191,7 @@ shader-art {
     background-color: #f0f0f0;
     padding: 8px;
     text-align: center;
-    /* Asegura que el footer esté en la parte inferior */
     margin-top: auto;
-    /* Empuja el footer hacia abajo */
 }
 
 .chat-footer p {
@@ -208,7 +201,7 @@ shader-art {
 }
 
 .chat-footer a {
-    color: #c70000;
+    color: #004a77;
     text-decoration: underline;
 }
 
@@ -225,7 +218,7 @@ shader-art {
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    border: 2px solid #c70000;
+    border: 3px solid #004a77;
     margin-right: 10px;
     position: relative;
     z-index: 2;
@@ -270,7 +263,7 @@ shader-art {
 }
 
 .terms-container a {
-    color: #c70000;
+    color: #004a77;
     text-decoration: underline;
 }
 
@@ -313,7 +306,7 @@ shader-art {
 .accept-button,
 .back-button {
     margin-top: 10px;
-    background: #c70000;
+    background: #004a77;
     color: white;
     border: none;
     padding: 8px 15px;
@@ -324,12 +317,12 @@ shader-art {
 
 .accept-button:hover,
 .back-button:hover {
-    background: #831818;
+    background: #013758;
 }
 
 /* Aumenta el tamaño del checkbox */
 input[type="checkbox"] {
-    accent-color: #c70000;
+    accent-color: #004a77;
     transform: scale(1.5);
     /* Hace la palomita 1.5 veces más grande */
 }
@@ -337,11 +330,8 @@ input[type="checkbox"] {
 .terms-content {
     flex-grow: 1;
     overflow-y: auto;
-    /* Habilita el scroll cuando sea necesario */
     max-height: 250px;
-    /* Altura máxima dentro del contenedor */
     padding-right: 10px;
-    /* Espacio para evitar que el texto se corte con la barra de desplazamiento */
 }
 
 /* Personalización de la barra de scroll */
@@ -350,7 +340,7 @@ input[type="checkbox"] {
 }
 
 .terms-content::-webkit-scrollbar-thumb {
-    background-color: #c70000;
+    background-color: #004a77;
     border-radius: 4px;
 }
 
