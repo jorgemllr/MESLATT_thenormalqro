@@ -15,7 +15,6 @@ body {
     background-color: #000000;
 }
 
-/* El shader ocupará todo el viewport */
 shader-art {
     position: absolute;
     top: 0;
@@ -25,7 +24,6 @@ shader-art {
     z-index: -1;
 }
 
-/* Estilos para los contenedores laterales */
 .side-container {
     width: calc(50vw - 210px);
     height: 100%;
@@ -54,7 +52,6 @@ shader-art {
 .chat-container {
     width: 420px;
     height: 100vh;
-    /* Hace que el contenedor del chat ocupe toda la altura de la pantalla */
     border: 1px solid #000000;
     border-radius: 10px;
     overflow: hidden;
@@ -66,7 +63,7 @@ shader-art {
 
 .logo-container {
     height: 120px;
-    background: linear-gradient(to right, black, #004a77);
+    background: linear-gradient(to right, black, #a5a5a5);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -86,17 +83,14 @@ shader-art {
     flex-direction: column;
     gap: 10px;
     background: rgba(0, 0, 0, 0.6);
-    /* Fondo semitransparente para contrastar los mensajes */
 }
 
 .chat-input {
     display: flex;
     padding: 10px;
     border-top: 1px solid #000000;
-    background: linear-gradient(to right, black, #004a77);
-    /* Asegura que el input esté pegado al footer */
+    background: linear-gradient(to right, black, #a5a5a5);
     margin-top: auto;
-    /* Empuja el input hacia abajo */
 }
 
 .chat-input input {
@@ -108,7 +102,6 @@ shader-art {
     outline: none;
     color: white;
     font-size: 16px;
-    /* Ajusta el tamaño de la fuente */
 }
 
 .chat-input button {
@@ -124,9 +117,7 @@ shader-art {
 
 .chat-input button i {
     font-size: 20px;
-    /* Ajusta el tamaño del ícono */
     margin: 0;
-    /* Elimina el margen alrededor */
 }
 
 .message {
@@ -135,23 +126,20 @@ shader-art {
     padding: 10px 15px;
     border-radius: 15px;
     max-width: 75%;
-    /* Limita el ancho de cada mensaje */
     margin-bottom: 10px;
 }
 
 .user-message {
-    background: #004a77;
+    background: #a5a5a5;
     align-self: flex-end;
     color: white;
     border-radius: 15px 15px 0px 15px;
-    /* Borde redondeado tipo "nube" */
     margin-left: auto;
 }
 
 .bot-message-container {
     display: flex;
     align-items: flex-start;
-    /* Alinea los elementos al borde superior */
     max-width: 75%;
     margin-bottom: 10px;
     padding-left: 0;
@@ -164,7 +152,7 @@ shader-art {
     border-radius: 50%;
     object-fit: cover;
     margin-right: 10px;
-    border: 2px solid #004a77;
+    border: 2px solid #a5a5a5;
     align-self: flex-start;
     margin-top: 0;
 }
@@ -218,7 +206,7 @@ shader-art {
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    border: 3px solid #004a77;
+    border: 3px solid #a5a5a5;
     margin-right: 10px;
     position: relative;
     z-index: 2;
@@ -306,7 +294,7 @@ shader-art {
 .accept-button,
 .back-button {
     margin-top: 10px;
-    background: #004a77;
+    background: #a5a5a5;
     color: white;
     border: none;
     padding: 8px 15px;
@@ -317,14 +305,12 @@ shader-art {
 
 .accept-button:hover,
 .back-button:hover {
-    background: #013758;
+    background: #4a4a4a;
 }
 
-/* Aumenta el tamaño del checkbox */
 input[type="checkbox"] {
-    accent-color: #004a77;
+    accent-color: #a5a5a5;
     transform: scale(1.5);
-    /* Hace la palomita 1.5 veces más grande */
 }
 
 .terms-content {
@@ -334,7 +320,6 @@ input[type="checkbox"] {
     padding-right: 10px;
 }
 
-/* Personalización de la barra de scroll */
 .terms-content::-webkit-scrollbar {
     width: 6px;
 }
@@ -349,14 +334,10 @@ input[type="checkbox"] {
 }
 
 .disclaimer-text a {
-    color: #c70000;
-    /* Color para todos los enlaces */
+    color: #a5a5a5;
     text-decoration: underline;
-    /* Asegura que todos los enlaces estén subrayados */
 }
 
-/* Estilo específico para el enlace de MESLAT */
 .disclaimer-text a[href="https://meslattcom.com"] {
-    color: #c70000;
-    /* Color para el enlace de MESLAT */
+    color: #a5a5a5;
 }
